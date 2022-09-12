@@ -1,0 +1,114 @@
+html {
+  font-family: "Poiret One", cursive;
+  color: #000;
+  background: #FEEAE8;
+  height: 100%;
+}
+
+html, * {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #FEEAE8;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s 2s;
+}
+
+.preloader.loaded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.page__decor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+  background: url("../img/login-decor-top.png") no-repeat top right/55%, url("../img/login-decor-bottom.png") no-repeat bottom left/75%;
+}
+.page__content {
+  position: relative;
+  z-index: 2;
+}
+
+.login {
+  width: 990px;
+  padding: 55px 160px;
+  background-color: #fff;
+}
+.login__title {
+  font-size: 45px;
+  line-height: 53px;
+  max-width: 320px;
+  font-weight: 400;
+  margin: auto;
+  text-align: center;
+}
+.login__flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.login__block {
+  text-align: center;
+}
+.login__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+  font-size: 30px;
+  line-height: 35px;
+  text-align: center;
+  color: #000000;
+}
+.login__input {
+  padding: 14px 18px;
+  font-size: 25px;
+  line-height: 29px;
+  color: #000;
+  border: 1px solid #000000;
+  margin-top: 8px;
+}
+.login__input::placeholder {
+  color: #867B7B;
+}
+.login__input:focus::placeholder {
+  color: transparent;
+}
+.login__btn {
+  padding: 0 5px;
+  background: transparent;
+  border: 0;
+  font-size: 20px;
+  color: #000;
+  cursor: pointer;
+  border-bottom: 1px solid #ccc;
+  transition: 0.3s;
+}
+.login__btn:hover {
+  border-bottom-color: #000;
+}
+
+/*# sourceMappingURL=login.css.map */
