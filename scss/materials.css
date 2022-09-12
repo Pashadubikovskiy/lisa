@@ -272,6 +272,7 @@ body {
   border: none;
   font-weight: 700;
   cursor: pointer;
+  transition: 0.3s;
 }
 .overlay__close:hover {
   color: #0B1AA5;
