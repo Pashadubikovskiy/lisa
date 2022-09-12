@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="scss/normalize.css">
+    <link rel="stylesheet" href="scss/login.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="page">
+        <div class="page__decor page-decor">
+        </div>
+        <div class="page__content page__content--login login">
+            <h1 class="login__title">Привіт, дорогенька!</h1>
+            <div class="login__flex">
+                <div class="login__logo">
+                    <img src="img/logo.png" alt="Лого Лиси">
+                </div>
+                <div class="login__block">
+                    <form class="login__form">
+                        <label for="username" class="login__label">
+                            логін
+                            <input type="text" id="username" name="username" class="login__input" placeholder="адмін">
+                        </label>
+                        <label for="password" class="login__label">
+                            пароль
+                            <input type="password" id="password" name="password" class="login__input" placeholder="********">
+                        </label>
+
+                        <input type="submit" value="Вхід" class="login__btn">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="preloader">
+        <img src="img/preloader.png" alt="Привіт!">
+    </div>
+    <script src="js/common.js"></script>
+</body>
+</html>
