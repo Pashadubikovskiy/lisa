@@ -294,6 +294,10 @@ body {
     text-shadow: .1rem .1rem #fff;
     border: none;
     font-weight: 700;
+    cursor: pointer;
+    &:hover {
+      color: #0B1AA5;
+    }
   }
 
   img {
