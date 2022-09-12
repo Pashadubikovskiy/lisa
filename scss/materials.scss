@@ -50,6 +50,8 @@ body {
     padding: 2.6rem 9.5rem;
     width: 45.0rem;
     height: 100%;
+    display: flex;
+    flex-direction: column;
   }
   &__content {
     padding: 3.4rem 2.0rem;
@@ -60,7 +62,7 @@ body {
     font-size: 2.5rem;
     line-height: 2.9rem;
     list-style: none;
-    max-height: 77vh;
+    max-height: 76vh;
     overflow: auto;
     margin: 2.5rem 0 0;
   }
@@ -69,7 +71,7 @@ body {
   }
   &__burger {
     position: relative;
-    margin-top: 6rem;
+    margin-top: auto;
   }
 }
 .page-category {
@@ -77,6 +79,7 @@ body {
     color: #000;
     text-decoration: none;
     position: relative;
+    text-shadow: .1rem .1rem #fff;
     &:hover {
       color: #0B1AA5;
     }
