@@ -1,0 +1,278 @@
+html {
+  font-family: "Poiret One", cursive;
+  color: #000;
+  background: #fff;
+  height: 100%;
+  font-size: 0.5787037037vw;
+}
+
+html, * {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+  border-radius: 2rem;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 2rem;
+  background: #fff7f7;
+  opacity: 0.3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FEDFDC;
+  border-radius: 2rem;
+}
+
+.page {
+  height: 100%;
+}
+.page--materials {
+  display: flex;
+}
+.page__name {
+  font-size: 3.5rem;
+  line-height: 4.1rem;
+  text-align: center;
+  color: #000000;
+}
+.page__sidebar {
+  background: url("../img/sidebar-top.png") no-repeat left top/42.2rem 84.4rem, url("../img/sidebar-bottom.png") no-repeat left bottom/62.2rem 43.7rem;
+  background-color: #E0E4DE;
+  padding: 2.6rem 9.5rem;
+  width: 45rem;
+  height: 100%;
+}
+.page__content {
+  padding: 3.4rem 2rem;
+  width: calc(100% - 45rem);
+  overflow: auto;
+}
+.page__categories {
+  font-size: 2.5rem;
+  line-height: 2.9rem;
+  list-style: none;
+  max-height: 77vh;
+  overflow: auto;
+  margin: 2.5rem 0 0;
+}
+.page__category {
+  margin-bottom: 0.5rem;
+}
+.page__burger {
+  position: relative;
+  margin-top: 6rem;
+}
+
+.page-category__link {
+  color: #000;
+  text-decoration: none;
+  position: relative;
+}
+.page-category__link:hover {
+  color: #0B1AA5;
+}
+.page-category__link::before {
+  content: "";
+  position: absolute;
+  width: 1.9rem;
+  height: 1.9rem;
+  top: 65%;
+  transform: translateY(-50%);
+  left: -2.5rem;
+}
+.page-category__link--is-active {
+  color: #0B1AA5;
+}
+.page-category__link--is-active::before {
+  background: url("../img/active-cat.svg") no-repeat center/cover;
+}
+
+.burger__btn {
+  background: #FBF7F7;
+  border-radius: 2.5rem;
+  border: none;
+  padding: 0.5rem 4.5rem 0.9rem;
+  font-size: 2.5rem;
+  color: #000000;
+  cursor: pointer;
+}
+.burger__btn:hover {
+  color: #0B1AA5;
+}
+.burger__menu {
+  position: absolute;
+  left: 20rem;
+  bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+.burger__menu--is-opened {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.burger-menu__close {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 1.5rem;
+  font-size: 2.5rem;
+}
+.burger-menu__close:hover {
+  color: #0B1AA5;
+}
+.burger-menu__list {
+  margin: 0;
+  background: #FBF7F7;
+  padding: 5rem 3.2rem 4rem;
+  min-width: 30rem;
+  list-style: none;
+  font-size: 2.5rem;
+  line-height: 2.9rem;
+}
+
+.burger-menu-list__item {
+  margin-bottom: 5px;
+}
+
+.burger-menu-list-item__link {
+  color: #000;
+  text-decoration: none;
+  font-size: 2.5rem;
+  line-height: 2.9rem;
+  text-shadow: 0.1rem 0.1rem #fff;
+}
+.burger-menu-list-item__link:hover {
+  color: #0B1AA5;
+}
+
+.materials__search {
+  margin-bottom: 2rem;
+}
+.materials__table {
+  overflow: auto;
+  height: calc(100% - 6rem);
+}
+
+.materials-search__input {
+  border: 0.1rem solid #A49C9C;
+  border-radius: 2.5rem;
+  font-weight: 400;
+  font-size: 2.5rem;
+  color: #000;
+  text-align: center;
+  min-width: 38rem;
+  padding: 0.3rem 2rem 0.5rem;
+  outline: none;
+}
+.materials-search__input::placeholder {
+  color: #A49C9C;
+}
+.materials-search__input:focus {
+  border-color: #A49C9C;
+}
+.materials-search__input:focus::placeholder {
+  color: transparent;
+}
+
+.materials-table__header .materials-table__col {
+  border-top: 0.1rem solid #D2CBCB;
+  padding: 3rem;
+}
+.materials-table__row {
+  cursor: pointer;
+}
+.materials-table__row:hover {
+  background-color: #fff7f7;
+}
+.materials-table__row, .materials-table__header {
+  display: flex;
+}
+.materials-table__col {
+  border: 0.1rem solid #D2CBCB;
+  border-top: none;
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+  font-size: 2.5rem;
+  line-height: 2.9rem;
+  flex: 1;
+}
+.materials-table__col--1 {
+  min-width: 15rem;
+}
+.materials-table__col--2 {
+  min-width: 23rem;
+  padding: 0;
+}
+.materials-table__col--3 {
+  min-width: 20rem;
+}
+.materials-table__col--4, .materials-table__col--5 {
+  min-width: 12.5rem;
+}
+.materials-table__col--6 {
+  min-width: 16rem;
+}
+.materials-table__col--7 {
+  min-width: 17.5rem;
+}
+.materials-table img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+.overlay--is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+.overlay__container {
+  width: 107rem;
+  height: 83rem;
+  position: relative;
+}
+.overlay__close {
+  font-size: 5rem;
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  padding: 2.5rem;
+  background: transparent;
+  color: #867B7B;
+  text-shadow: 0.1rem 0.1rem #fff;
+  border: none;
+  font-weight: 700;
+}
+.overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=materials.css.map */
