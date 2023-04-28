@@ -24,8 +24,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.3s 2s;
-  display: none;
+  transition: opacity 0.3s 1.5s;
 }
 
 .preloader.loaded {
