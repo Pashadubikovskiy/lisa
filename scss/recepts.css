@@ -33,7 +33,7 @@ body {
 .page {
   height: 100%;
 }
-.page--materials {
+.page--recepts {
   display: flex;
 }
 .page__name {
@@ -44,8 +44,8 @@ body {
   margin-bottom: 10px;
 }
 .page__sidebar {
-  background: url("../img/sidebar-top.png") no-repeat left top/42.2rem 84.4rem, url("../img/sidebar-bottom.png") no-repeat left bottom/62.2rem 43.7rem;
-  background-color: #E0E4DE;
+  background: url("../img/sidebar-top.png") no-repeat -40px top/42.2rem 84.4rem, url("../img/sidebar-bottom.png") no-repeat -100px bottom/600px auto;
+  background-color: #D5D9FE;
   padding: 86px 51px 86px 86px;
   width: 440px;
   height: 100%;
@@ -162,24 +162,24 @@ body {
   color: #0B1AA5;
 }
 
-.materials__search {
+.recepts__search {
   margin-bottom: 16px;
 }
-.materials__table {
+.recepts__table {
   overflow: auto;
   height: calc(100% - 7rem);
   border-top: 0.1rem solid #D2CBCB;
   border-bottom: 0.1rem solid #D2CBCB;
 }
 
-.materials-search {
+.recepts-search {
   padding-left: 28px;
 }
-.materials-search__input {
+.recepts-search__input {
   border: 1px solid #A49C9C;
   border-radius: 25px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 18px;
   color: #000;
   text-align: center;
@@ -187,57 +187,72 @@ body {
   padding: 9px;
   outline: none;
 }
-.materials-search__input::placeholder {
+.recepts-search__input::placeholder {
   color: #A49C9C;
 }
-.materials-search__input:focus {
+.recepts-search__input:focus {
   border-color: #A49C9C;
 }
-.materials-search__input:focus::placeholder {
+.recepts-search__input:focus::placeholder {
   color: transparent;
 }
 
-.materials-table__header .materials-table__col {
+.recepts-table__header .recepts-table__col {
   border-top: 0.1rem solid #D2CBCB;
   padding: 3rem;
 }
-.materials-table__row {
-  cursor: pointer;
-}
-.materials-table__row--empty {
+.recepts-table__row--empty {
   cursor: not-allowed;
   filter: grayscale(1);
 }
-.materials-table__row--yellow .materials-table__col--qty {
+.recepts-table__row--yellow .recepts-table__col--qty {
   color: #CD8F32;
 }
-.materials-table__row--red .materials-table__col--qty {
+.recepts-table__row--red .recepts-table__col--qty {
   color: #F40909;
 }
-.materials-table__row:hover {
+.recepts-table__row:hover {
   background-color: #fff7f7;
 }
-.materials-table__row, .materials-table__header {
+.recepts-table__row, .recepts-table__header {
   display: grid;
-  grid-template-columns: 0.7fr 1fr 2.3fr 0.7fr 2.3fr 1fr 1fr;
+  grid-template-columns: 0.7fr 0.7fr 2.3fr 1fr 1fr 1fr;
 }
-.materials-table__col {
+.recepts-table__col {
   border: 0.1rem solid #D2CBCB;
   border-top: none;
   display: flex;
   align-items: center;
   padding: 3rem;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 18px;
+  font-weight: 500;
 }
-.materials-table__col--2 {
+.recepts-table__col--blue {
+  color: #0B1AA5;
+}
+.recepts-table__col--2 {
   padding: 0;
 }
-.materials-table__img {
+.recepts-table__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   cursor: pointer;
+}
+
+.simple-btn {
+  border: none;
+  text-decoration: none;
+  outline: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+.simple-btn--green {
+  color: #0B9F4F;
 }
 
 .overlay {
@@ -286,4 +301,4 @@ body {
   object-fit: cover;
 }
 
-/*# sourceMappingURL=materials.css.map */
+/*# sourceMappingURL=recepts.css.map */

@@ -1,0 +1,103 @@
+@function vw($px-vw, $base-vw: 1728) {
+  @return ($px-vw * 100vw) / $base-vw;
+}
+html {
+  font-family: 'Poiret One', cursive;
+  color: #000;
+  background: #fff;
+  height: 100%;
+  font-size: vw(10);
+}
+html, * {
+  box-sizing: border-box;
+}
+body {
+  height: 100%;
+}
+::-webkit-scrollbar {
+  width: 1rem;
+  border-radius: 2rem;
+}
+::-webkit-scrollbar-track {
+  border-radius: 2rem;
+  background: #fff7f7;
+  opacity: .3;
+}
+::-webkit-scrollbar-thumb {
+  background: #FEDFDC;
+  border-radius: 2rem;
+}
+
+.page {
+  height: 100%;
+  &--storage-1 {
+    display: flex;
+    background: url('../img/flower3.png') no-repeat left bottom / 654px auto, url('../img/flower4.png') no-repeat right bottom / 600px auto;
+    background-color: rgba(217, 217, 217, 0.34);
+    justify-content: center;
+    align-items: center;
+  }
+  &__container {
+    width: 606px;
+    height: 406px;
+    padding: 44px 50px;
+    background-color: #fff;
+  }
+}
+.storage-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  
+  &__row {
+    margin-bottom: 7px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+  }
+  &__text {
+    font-size: 25px;
+    line-height: 35px;
+    margin-right: auto;
+  }
+  &__number {
+    width: 300px;
+    background: #F5F5F5;
+    padding: 15px;
+    font-size: 15px;
+    line-height: 18px;
+    text-align: center;
+  }
+  &__btn {
+    border-radius: 25px;
+    padding: 8px 10px 16px;
+    min-width: 214px;
+    font-size: 25px;
+    line-height: 25px;
+    color: #000;
+    transition: .3s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+
+    &--save {
+      background: #BBEAD1;
+      margin-top: auto;
+
+      &:hover {
+        background: #68efa9;
+      }
+    }
+  }
+  &__title {
+    font-size: 25px;
+    line-height: 35px;
+    margin-bottom: 32px;
+
+    &-inner {
+      color: #0B1AA5;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+html {
+  font-family: "Poiret One", cursive;
+  color: #000;
+  background: #fff;
+  height: 100%;
+  font-size: 0.5787037037vw;
+}
+
+html, * {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+  border-radius: 2rem;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 2rem;
+  background: #fff7f7;
+  opacity: 0.3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FEDFDC;
+  border-radius: 2rem;
+}
+
+.page {
+  height: 100%;
+}
+.page--storage-1 {
+  display: flex;
+  background: url("../img/flower3.png") no-repeat left bottom/654px auto, url("../img/flower4.png") no-repeat right bottom/600px auto;
+  background-color: rgba(217, 217, 217, 0.34);
+  justify-content: center;
+  align-items: center;
+}
+.page__container {
+  width: 606px;
+  height: 406px;
+  padding: 44px 50px;
+  background-color: #fff;
+}
+
+.storage-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+.storage-content__row {
+  margin-bottom: 7px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.storage-content__text {
+  font-size: 25px;
+  line-height: 35px;
+  margin-right: auto;
+}
+.storage-content__number {
+  width: 300px;
+  background: #F5F5F5;
+  padding: 15px;
+  font-size: 15px;
+  line-height: 18px;
+  text-align: center;
+}
+.storage-content__btn {
+  border-radius: 25px;
+  padding: 8px 10px 16px;
+  min-width: 214px;
+  font-size: 25px;
+  line-height: 25px;
+  color: #000;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+.storage-content__btn--save {
+  background: #BBEAD1;
+  margin-top: auto;
+}
+.storage-content__btn--save:hover {
+  background: #68efa9;
+}
+.storage-content__title {
+  font-size: 25px;
+  line-height: 35px;
+  margin-bottom: 32px;
+}
+.storage-content__title-inner {
+  color: #0B1AA5;
+}
+
+/*# sourceMappingURL=storage_1.css.map */

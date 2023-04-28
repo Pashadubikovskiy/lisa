@@ -1,0 +1,174 @@
+html {
+  font-family: "Poiret One", cursive;
+  color: #000;
+  background: #fff;
+  height: 100%;
+  font-size: 0.5787037037vw;
+}
+
+html, * {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #EEEAEA;
+  opacity: 0.3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D9D2D2;
+  border-radius: 10px;
+}
+
+.page {
+  height: 100%;
+}
+.page__container {
+  height: 100%;
+}
+.page--storage-2 {
+  display: flex;
+  align-items: flex-start;
+}
+
+.storage-creating {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.storage-creating__col {
+  width: 50%;
+  text-align: center;
+  padding: 32px 20px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.storage-creating__col--red {
+  background: #FFFCFC;
+}
+.storage-creating__col--yellow {
+  background: #FEFFFA;
+  border-left: 1px solid #D2CBCB;
+}
+.storage-creating__title {
+  font-size: 25px;
+  line-height: 35px;
+  margin-bottom: 15px;
+}
+.storage-creating__table {
+  overflow: auto;
+  max-height: 75vh;
+  border-top: 0.1rem solid #D2CBCB;
+  border-bottom: 0.1rem solid #D2CBCB;
+}
+.storage-creating__btn {
+  margin-top: auto;
+  border-radius: 25px;
+  padding: 8px 10px 16px;
+  min-width: 214px;
+  font-size: 25px;
+  line-height: 25px;
+  color: #000;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+.storage-creating__btn--save {
+  background: #BBEAD1;
+}
+.storage-creating__btn--save:hover {
+  background: #68efa9;
+}
+
+.btn-delete {
+  display: flex;
+  margin: auto;
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-delete:hover {
+  opacity: 0.6;
+}
+
+.storage-creating-table__row {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr 2fr 0.7fr 0.7fr 0.5fr;
+}
+.storage-creating-table__col {
+  border: 0.1rem solid #D2CBCB;
+  border-top: none;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 18px;
+}
+.storage-creating-table__col--2 {
+  padding: 0;
+}
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+.overlay--is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+.overlay__container {
+  width: 728.11px;
+  height: 563.63px;
+  position: relative;
+}
+.overlay__close {
+  font-size: 5rem;
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  padding: 2.5rem;
+  background: transparent;
+  color: #867B7B;
+  text-shadow: 0.1rem 0.1rem #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.overlay__close:hover {
+  color: #0B1AA5;
+}
+.overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=storage_2.css.map */

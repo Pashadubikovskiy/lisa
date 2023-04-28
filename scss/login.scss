@@ -22,6 +22,7 @@ body {
   align-items: center;
   justify-content: center;
   transition: opacity .3s 2s;
+  display: none;
 }
 .preloader.loaded {
   opacity: 0;
@@ -50,15 +51,18 @@ body {
   }
 }
 .login {
-  width: 990px;
-  padding: 55px 160px;
+  width: 716px;
+  padding: 34px 84px 43px;
   background-color: #fff;
+  &__logo {
+    max-width: 208px;
+  }
   &__title {
-    font-size: 45px;
-    line-height: 53px;
-    max-width: 320px;
+    font-size: 35px;
+    line-height: 41px;
+    max-width: 240px;
     font-weight: 400;
-    margin: auto;
+    margin: auto auto 20px;
     text-align: center;
   }
   &__flex {
@@ -72,19 +76,20 @@ body {
   &__label {
     display: flex;
     flex-direction: column;
-    margin-bottom: 18px;
-    font-size: 30px;
-    line-height: 35px;
+    margin-bottom: 14px;
+    font-size: 25px;
+    line-height: 29px;
     text-align: center;
     color: #000000;
   }
   &__input {
-    padding: 14px 18px;
-    font-size: 25px;
-    line-height: 29px;
+    padding: 7px;
+    font-size: 15px;
+    line-height: 18px;
     color: #000;
     border: 1px solid #000000;
-    margin-top: 8px;
+    margin-top: 11px;
+    min-width: 250px;
 
     &::placeholder {
       color: #867B7B;
@@ -103,6 +108,7 @@ body {
     cursor: pointer;
     border-bottom: 1px solid #ccc;
     transition: .3s;
+    margin-top: 10px;
 
     &:hover {
       border-bottom-color: #000;

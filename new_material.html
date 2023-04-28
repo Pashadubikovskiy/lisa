@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="scss/normalize.css">
+    <link rel="stylesheet" href="scss/new_material.css">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="page page--new-material">
+    <div class="page__container">
+        <form class="page__form page-form">
+            <div class="page-form__col">
+                <select name="category" id="category" class="page-form__select">
+                    <option value="0">головки квітів текстильні</option>
+                    <option value="1">головки квітів текстильні</option>
+                    <option value="2">головки квітів текстильні</option>
+                    <option value="3">головки квітів текстильні</option>
+                </select>
+                <div class="page-form__photo drop-zone">
+                    <span class="drop-zone__prompt">додати фото</span>
+                    <input type="file" name="myFile" class="drop-zone__input">
+                </div>
+                <div class="page-form__row">
+                    <label class="page-form__label">
+                        заміна
+                        <input type="text" class="page-form__input"list="materials-list">
+                        <datalist id="materials-list">
+                            <option value="Chocolate">
+                            <option value="Coconut">
+                            <option value="Mint">
+                            <option value="Strawberry">
+                            <option value="Vanilla">
+                        </datalist>
+                    </label>
+                </div>
+                <button class="page-form__btn page-form__btn--save">зберегти</button>
+                <button class="page-form__btn page-form__btn--delete">видалити</button>
+            </div>
+
+            <div class="page-form__col">
+                <div class="page-form__row">
+                    <label class="page-form__label">
+                        артикул
+                        <input type="text" class="page-form__input" name="sku" id="sku">
+                    </label>
+                </div>
+                <div class="page-form__row">
+                    <label class="page-form__label">
+                        повна назва
+                        <input type="text" class="page-form__input" name=" name" id=" name">
+                    </label>
+                </div>
+                <div class="page-form__row">
+                    <label class="page-form__label">
+                        розмір
+                        <input type="text" class="page-form__input" name="size" id="size">
+                    </label>
+                </div>
+                <div class="page-form__row">
+                    <label class="page-form__label">
+                        ціна
+                        <input type="text" class="page-form__input" name="price" id="price">
+                    </label>
+                </div>
+                <div class="page-form__row">
+                    <label class="page-form__label">
+                        повна кількість
+                        <input type="text" class="page-form__input" name="qty" id="qty">
+                    </label>
+                </div>
+                <div class="page-form__row">
+                    <label class="page-form__label">
+                        місцезнаходження в офісі
+                        <input type="text" class="page-form__input" name="place" id="place">
+                    </label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="js/common.js"></script>
+</body>
+</html>
