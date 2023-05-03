@@ -23,9 +23,10 @@ if (burgerTriggers) {
 
 if (document.querySelector('.overlay')) {
     let materialsCategories = document.querySelectorAll('.page-category__link');
-    let materialImg = document.querySelectorAll('.materials-table__img, .recepts-table__img');
+    let materialImg = document.querySelectorAll('.materials-table__img, .recepts-table__img, .new-recept-table__img');
     let overlay = document.querySelector('.overlay');
     let overlayClose = document.querySelector('.overlay__close');
+    let overlayFormOpen = document.querySelector('.new-recept-link__label--form');
     if (materialsCategories) {
         const materialsCategoryChange = (e) => {
             e.preventDefault();
@@ -38,11 +39,22 @@ if (document.querySelector('.overlay')) {
         materialImg.forEach(el=> {
             el.addEventListener('click', ()=> {
                 overlay.classList.add('overlay--is-active');
+                overlay.classList.add('overlay--photo');
                 overlay.querySelector('img').src = el.getAttribute('src')
             })
         })
         overlayClose.addEventListener('click', ()=> {
             overlay.classList.remove('overlay--is-active');
+            setTimeout(function (){
+                overlay.classList.remove('overlay--photo');
+                overlay.classList.remove('overlay--form');
+            }, 500)
+        })
+    }
+    if (overlayFormOpen) {
+        overlayFormOpen.addEventListener('click', ()=> {
+            overlay.classList.add('overlay--is-active');
+            overlay.classList.add('overlay--form');
         })
     }
 }
@@ -117,4 +129,12 @@ function updateThumbnail(dropZoneElement, file) {
     } else {
         thumbnailElement.style.backgroundImage = null;
     }
+}
+
+
+if (document.querySelector('.new-recept__textarea')) {
+    document.querySelector('.new-recept-link__label--add-comment').addEventListener('click', function (){
+        document.querySelector('.new-recept__textarea').classList.add('new-recept__textarea--show')
+        document.querySelector('.new-recept-link__label--add-comment').remove()
+    })
 }

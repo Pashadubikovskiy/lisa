@@ -1,0 +1,341 @@
+html {
+  font-family: "Poiret One", cursive;
+  color: #000;
+  background: #fff;
+  height: 100%;
+  font-size: 0.5787037037vw;
+}
+
+html, * {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #EEEAEA;
+  opacity: 0.3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D9D2D2;
+}
+
+.page {
+  height: 100%;
+}
+.page--new-recept {
+  display: flex;
+}
+
+.new-recept {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+}
+.new-recept__sidebar {
+  background: url("../img/sidebar-top.png") no-repeat -40px top/42.2rem 84.4rem, url("../img/sidebar-bottom.png") no-repeat -100px bottom/600px auto;
+  padding: 57px 50px 86px 140px;
+  width: 520px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.new-recept__table {
+  overflow: auto;
+  height: calc(100% - 7rem);
+  border-top: 0.1rem solid #D2CBCB;
+  border-bottom: 0.1rem solid #D2CBCB;
+}
+.new-recept__input {
+  margin-top: 8px;
+  background: #FFFFFF;
+  border: 1px solid #A49C9C;
+  width: 296px;
+  outline: none;
+  padding: 2px 5px;
+  font-size: 25px;
+  line-height: 35px;
+  min-height: 40px;
+}
+.new-recept__input--name {
+  font-size: 25px;
+  line-height: 35px;
+  border: none;
+  outline: none;
+  color: #000;
+  margin-bottom: 34px;
+  margin-top: 0;
+}
+.new-recept__input--name::placeholder {
+  color: #A49C9C;
+}
+.new-recept__photo {
+  margin-bottom: 60px;
+}
+.new-recept__btn {
+  border-radius: 25px;
+  padding: 8px 10px 16px;
+  min-width: 214px;
+  font-size: 25px;
+  line-height: 25px;
+  color: #000;
+  transition: 0.3s;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: auto;
+  margin-right: auto;
+}
+.new-recept__btn--save {
+  background: #BBEAD1;
+  margin-bottom: 22px;
+}
+.new-recept__btn--save:hover {
+  background: #68efa9;
+}
+.new-recept__label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 25px;
+  line-height: 35px;
+}
+.new-recept__links {
+  margin-top: 25px;
+  list-style: none;
+  padding-left: 0;
+}
+.new-recept__textarea {
+  background: #FEEAE8;
+  border: 1px solid #A49C9C;
+  color: #A00202;
+  resize: none;
+  width: 296px;
+  min-height: 70px;
+  text-align: center;
+  padding: 10px 23px;
+  font-size: 15px;
+  line-height: 18px;
+  margin-top: 20px;
+  display: none;
+  outline: none;
+}
+.new-recept__textarea--show {
+  display: block;
+}
+
+.btn-delete {
+  display: flex;
+  margin: auto;
+  background: transparent;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  font-weight: inherit;
+  color: inherit;
+}
+.btn-delete:hover {
+  opacity: 0.6;
+}
+
+.drop-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 18px;
+  color: #000000;
+  cursor: pointer;
+  width: 296px;
+  height: 189px;
+  background: #F5F5F5;
+  transition: 0.3s;
+}
+.drop-zone:hover {
+  background: #e0e0e0;
+}
+.drop-zone--over {
+  background: rgba(213, 217, 254, 0.8);
+}
+.drop-zone__input {
+  display: none;
+}
+.drop-zone__thumb {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #cccccc;
+  background-size: cover;
+  position: relative;
+}
+.drop-zone__thumb::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 5px 0;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.75);
+  font-size: 14px;
+  text-align: center;
+}
+
+.new-recept-link__label {
+  font-size: 25px;
+  line-height: 35px;
+  color: #000000;
+  text-decoration: none;
+  position: relative;
+  transition: opacity 0.3s;
+}
+.new-recept-link__label:hover {
+  opacity: 0.7;
+}
+.new-recept-link__label--plus::before {
+  position: absolute;
+  content: "+";
+  top: 65%;
+  left: -17px;
+  transform: translateY(-50%);
+}
+
+.new-recept-table__row {
+  color: #000;
+  font-weight: 600;
+}
+.new-recept-table__row--empty {
+  color: #A49C9C;
+}
+.new-recept-table__row--empty button {
+  pointer-events: none;
+}
+.new-recept-table__row:hover {
+  background-color: #fff7f7;
+}
+.new-recept-table__row {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr 2.3fr 0.7fr 0.7fr 0.7fr 0.7fr;
+}
+.new-recept-table__col {
+  border: 0.1rem solid #D2CBCB;
+  border-top: none;
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+  font-size: 17px;
+  line-height: 18px;
+}
+.new-recept-table__col--2 {
+  padding: 0;
+}
+.new-recept-table__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.new-component {
+  background: #D5D9FE;
+  height: 336px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 40px 85px 50px 65px;
+}
+.new-component__title {
+  font-size: 25px;
+  line-height: 35px;
+  color: #000000;
+  margin: 0 0 5px;
+  font-weight: 400;
+}
+.new-component__label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 15px;
+  line-height: 18px;
+}
+.new-component__input {
+  width: 298px;
+  height: 39px;
+  left: 572px;
+  top: 385px;
+  background: #FFFFFF;
+  border: none;
+  outline: none;
+  margin-top: 5px;
+  padding: 8px;
+}
+.new-component__row {
+  margin-top: 10px;
+}
+
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+}
+.overlay--is-active {
+  opacity: 1;
+  pointer-events: all;
+}
+.overlay--photo .new-component {
+  display: none;
+}
+.overlay--form img {
+  display: none;
+}
+.overlay__container {
+  max-width: 728.11px;
+  max-height: 563.63px;
+  position: relative;
+}
+.overlay__close {
+  font-size: 3.5rem;
+  position: absolute;
+  right: 0%;
+  top: 0;
+  padding: 2.5rem;
+  background: transparent;
+  color: #867B7B;
+  text-shadow: 0.1rem 0.1rem #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.overlay__close:hover {
+  color: #0B1AA5;
+}
+.overlay img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=new_recept.css.map */

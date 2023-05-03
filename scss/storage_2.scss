@@ -14,18 +14,18 @@ html, * {
 body {
   height: 100%;
 }
+
 ::-webkit-scrollbar {
-  width: 5px;
-  border-radius: 10px;
+  width: 4px;
 }
+
 ::-webkit-scrollbar-track {
-  border-radius: 10px;
   background: #EEEAEA;
   opacity: .3;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #D9D2D2;
-  border-radius: 10px;
 }
 
 .page {
