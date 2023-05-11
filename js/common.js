@@ -23,10 +23,10 @@ if (burgerTriggers) {
 
 if (document.querySelector('.overlay')) {
     let materialsCategories = document.querySelectorAll('.page-category__link');
-    let materialImg = document.querySelectorAll('.materials-table__img, .recepts-table__img, .new-recept-table__img');
+    let materialImg = document.querySelectorAll('.open-image');
     let overlay = document.querySelector('.overlay');
     let overlayClose = document.querySelector('.overlay__close');
-    let overlayFormOpen = document.querySelector('.new-recept-link__label--form');
+    let overlayFormOpen = document.querySelector('.component-form');
     if (materialsCategories) {
         const materialsCategoryChange = (e) => {
             e.preventDefault();
@@ -132,9 +132,9 @@ function updateThumbnail(dropZoneElement, file) {
 }
 
 
-if (document.querySelector('.new-recept__textarea')) {
-    document.querySelector('.new-recept-link__label--add-comment').addEventListener('click', function (){
-        document.querySelector('.new-recept__textarea').classList.add('new-recept__textarea--show')
-        document.querySelector('.new-recept-link__label--add-comment').remove()
+if (document.querySelector('.recept-add-comment')) {
+    document.querySelector('.recept-add-comment').addEventListener('click', function (){
+        document.querySelector('.recept-textarea').classList.add('recept-textarea--show')
+        document.querySelector('.recept-add-comment').remove()
     })
 }

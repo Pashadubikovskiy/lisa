@@ -29,7 +29,7 @@
                     <input type="text" class="new-recept__input" name="sku" id="sku">
                 </label>
             </div>
-            <textarea class="new-recept__textarea" placeholder="Коментар..."></textarea>
+            <textarea class="new-recept__textarea recept-textarea" placeholder="Коментар..."></textarea>
 
             <ul class="new-recept__links">
                 <li class="new-recept__link new-recept-link">
@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li class="new-recept__link new-recept-link">
-                    <a href="#" class="new-recept-link__label new-recept-link__label--plus new-recept-link__label--form">
+                    <a href="#" class="new-recept-link__label new-recept-link__label--plus new-recept-link__label--form component-form">
                         додати новий компонент
                     </a>
                 </li>
@@ -58,7 +58,7 @@
                     </a>
                 </li>
                 <li class="new-recept__link new-recept-link">
-                    <a href="#" class="new-recept-link__label new-recept-link__label--plus new-recept-link__label--add-comment">
+                    <a href="#" class="new-recept-link__label new-recept-link__label--plus new-recept-link__label--add-comment recept-add-comment">
                         додати коментар
                     </a>
                 </li>
@@ -68,7 +68,7 @@
             <div class="new-recept-table__body">
                 <div class="new-recept-table__row">
                     <div class="new-recept-table__col new-recept-table__col--1">АА01</div>
-                    <div class="new-recept-table__col new-recept-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="new-recept-table__img"></div>
+                    <div class="new-recept-table__col new-recept-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="new-recept-table__img open-image"></div>
                     <div class="new-recept-table__col new-recept-table__col--3">ранункулюс болотний</div>
                     <div class="new-recept-table__col new-recept-table__col--4">3 см</div>
                     <div class="new-recept-table__col new-recept-table__col--5">9 од.</div>
@@ -393,6 +393,7 @@
                     <input type="text" placeholder="..." class="new-component__input">
                 </label>
             </div>
+            <input type="submit" value="Додати" class="new-component__btn">
         </form>
     </div>
 </div>

@@ -31,11 +31,11 @@ body {
 
 .page {
   height: 100%;
-  &--new-recept {
+  &--change-recept {
     display: flex;
   }
 }
-.new-recept {
+.change-recept {
   display: flex;
   align-items: center;
   margin-right: 30px;
@@ -135,10 +135,7 @@ body {
   }
 }
 .recept-textarea {
-  display: none;
-  &--show {
-    display: block;
-  }
+  display: block;
 }
 .btn-delete {
   display: flex;
@@ -203,7 +200,7 @@ body {
     }
   }
 }
-.new-recept-link {
+.change-recept-link {
   &__label {
     font-size: 25px;
     line-height: 35px;
@@ -227,7 +224,7 @@ body {
     }
   }
 }
-.new-recept-table {
+.change-recept-table {
   &__row {
     color: #000;
     font-weight: 600;

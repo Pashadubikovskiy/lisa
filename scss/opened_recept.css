@@ -30,16 +30,16 @@ body {
 .page {
   height: 100%;
 }
-.page--new-recept {
+.page--change-recept {
   display: flex;
 }
 
-.new-recept {
+.change-recept {
   display: flex;
   align-items: center;
   margin-right: 30px;
 }
-.new-recept__sidebar {
+.change-recept__sidebar {
   background: url("../img/sidebar-top.png") no-repeat -40px top/42.2rem 84.4rem, url("../img/sidebar-bottom.png") no-repeat -100px bottom/600px auto;
   padding: 57px 50px 86px 140px;
   min-width: 520px;
@@ -47,13 +47,13 @@ body {
   display: flex;
   flex-direction: column;
 }
-.new-recept__table {
+.change-recept__table {
   overflow: auto;
   height: calc(100% - 7rem);
   border-top: 0.1rem solid #D2CBCB;
   border-bottom: 0.1rem solid #D2CBCB;
 }
-.new-recept__input {
+.change-recept__input {
   margin-top: 8px;
   background: #FFFFFF;
   border: 1px solid #A49C9C;
@@ -64,7 +64,7 @@ body {
   line-height: 35px;
   min-height: 40px;
 }
-.new-recept__input--name {
+.change-recept__input--name {
   font-size: 25px;
   line-height: 35px;
   border: none;
@@ -73,13 +73,13 @@ body {
   margin-bottom: 34px;
   margin-top: 0;
 }
-.new-recept__input--name::placeholder {
+.change-recept__input--name::placeholder {
   color: #A49C9C;
 }
-.new-recept__photo {
+.change-recept__photo {
   margin-bottom: 60px;
 }
-.new-recept__btn {
+.change-recept__btn {
   border-radius: 25px;
   padding: 8px 10px 16px;
   min-width: 214px;
@@ -94,26 +94,26 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.new-recept__btn--save {
+.change-recept__btn--save {
   background: #BBEAD1;
   margin-bottom: 22px;
 }
-.new-recept__btn--save:hover {
+.change-recept__btn--save:hover {
   background: #68efa9;
 }
-.new-recept__label {
+.change-recept__label {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   font-size: 25px;
   line-height: 35px;
 }
-.new-recept__links {
+.change-recept__links {
   margin-top: 25px;
   list-style: none;
   padding-left: 0;
 }
-.new-recept__textarea {
+.change-recept__textarea {
   background: #FEEAE8;
   border: 1px solid #A49C9C;
   color: #A00202;
@@ -129,9 +129,6 @@ body {
 }
 
 .recept-textarea {
-  display: none;
-}
-.recept-textarea--show {
   display: block;
 }
 
@@ -196,7 +193,7 @@ body {
   text-align: center;
 }
 
-.new-recept-link__label {
+.change-recept-link__label {
   font-size: 25px;
   line-height: 35px;
   color: #000000;
@@ -204,10 +201,10 @@ body {
   position: relative;
   transition: opacity 0.3s;
 }
-.new-recept-link__label:hover {
+.change-recept-link__label:hover {
   opacity: 0.7;
 }
-.new-recept-link__label--plus::before {
+.change-recept-link__label--plus::before {
   position: absolute;
   content: "+";
   top: 65%;
@@ -215,24 +212,24 @@ body {
   transform: translateY(-50%);
 }
 
-.new-recept-table__row {
+.change-recept-table__row {
   color: #000;
   font-weight: 600;
 }
-.new-recept-table__row--empty {
+.change-recept-table__row--empty {
   color: #A49C9C;
 }
-.new-recept-table__row--empty button {
+.change-recept-table__row--empty button {
   pointer-events: none;
 }
-.new-recept-table__row:hover {
+.change-recept-table__row:hover {
   background-color: #fff7f7;
 }
-.new-recept-table__row {
+.change-recept-table__row {
   display: grid;
   grid-template-columns: 0.7fr 1fr 2.3fr 0.7fr 0.7fr 0.7fr 0.7fr;
 }
-.new-recept-table__col {
+.change-recept-table__col {
   border: 0.1rem solid #D2CBCB;
   border-top: none;
   display: flex;
@@ -241,14 +238,88 @@ body {
   font-size: 17px;
   line-height: 18px;
 }
-.new-recept-table__col--2 {
+.change-recept-table__col--2 {
   padding: 0;
 }
-.new-recept-table__img {
+.change-recept-table__col--7 {
+  justify-content: center;
+}
+.change-recept-table__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   cursor: pointer;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 43px;
+  margin-bottom: 30px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 43px;
+  height: 30px;
+  background-color: #fff;
+  border: 1px solid #A49C9C;
+  transition: 0.3s;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #eee;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  bottom: 6px;
+  left: 3px;
+  background: url("../img/checked.svg") no-repeat center/100% 100%;
+  width: 38px;
+  height: 34px;
+}
+
+.variables-materials {
+  background: transparent;
+  border: none;
+  background: url("../img/select-arrow.svg") no-repeat left center/9px 11px;
+  padding-left: 15px;
+  margin-left: -15px;
+  -webkit-appearance: none;
+  outline: none;
+  font-weight: 600;
 }
 
 .new-component {
@@ -354,4 +425,4 @@ body {
   object-fit: cover;
 }
 
-/*# sourceMappingURL=new_recept.css.map */
+/*# sourceMappingURL=opened_recept.css.map */
