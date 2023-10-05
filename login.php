@@ -1,18 +1,7 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="scss/normalize.css">
-    <link rel="stylesheet" href="scss/login.css">
-    <title>Document</title>
-</head>
-<body>
+<?php
+require('header.php');
+echo  insertHeader('login');
+?>
     <div class="page">
         <div class="page__decor page-decor">
         </div>
@@ -23,7 +12,7 @@
                     <img src="img/logo.png" alt="Лого Лиси">
                 </div>
                 <div class="login__block">
-                    <form class="login__form">
+                    <form class="login__form" id="login-form">
                         <label for="username" class="login__label">
                             логін
                             <input type="text" id="username" name="username" class="login__input" placeholder="адмін">
@@ -42,6 +31,7 @@
     <div class="preloader">
         <img src="img/preloader.png" alt="Привіт!">
     </div>
-    <script src="js/common.js"></script>
-</body>
-</html>
+
+<?php
+require('footer.php');
+?>

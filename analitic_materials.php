@@ -1,18 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="scss/normalize.css">
-    <link rel="stylesheet" href="scss/materials.css">
-    <title>Document</title>
-</head>
-<body>
+<?php
+require_once('login-check.php');
+require('header.php');
+echo  insertHeader('analitic-materials');
+?>
 <div class="page page--materials">
     <div class="page__sidebar">
         <div class="page__name">
@@ -113,98 +103,98 @@
         <div class="materials__search materials-search">
             <input type="text" class="materials-search__input" name="materials-search__input" placeholder="назва, артикул...">
         </div>
+        <div class="materials-table__header">
+            <div class="materials-table__col materials-table__col--1"></div>
+            <div class="materials-table__col materials-table__col--2"></div>
+            <div class="materials-table__col materials-table__col--3"></div>
+            <div class="materials-table__col materials-table__col--4"></div>
+            <div class="materials-table__col materials-table__col--5"></div>
+            <div class="materials-table__col materials-table__col--6 materials-table__col--qty"></div>
+            <div class="materials-table__col materials-table__col--7" style="padding: 10px 0">загальна сума, грн</div>
+            <div class="materials-table__col materials-table__col--8 materials-table__col--qty" style="padding: 10px 0">оборот за 30 дн., раз</div>
+        </div>
         <div class="materials__table materials-table">
-<!--            <div class="materials-table__header">-->
-<!--                <div class="materials-table__col materials-table__col&#45;&#45;1">Арт.</div>-->
-<!--                <div class="materials-table__col materials-table__col&#45;&#45;2">Фото</div>-->
-<!--                <div class="materials-table__col materials-table__col&#45;&#45;3">Назва</div>-->
-<!--                <div class="materials-table__col materials-table__col&#45;&#45;4">Розмір</div>-->
-<!--                <div class="materials-table__col materials-table__col&#45;&#45;5">Ціна</div>-->
-<!--                <div class="materials-table__col materials-table__col&#45;&#45;6">Місце</div>-->
-<!--                <div class="materials-table__col materials-table__col&#45;&#45;7">К-сть</div>-->
-<!--            </div>-->
             <div class="materials-table__body">
                 <div class="materials-table__row">
                     <div class="materials-table__col materials-table__col--1">АА01</div>
                     <div class="materials-table__col materials-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="materials-table__img open-image"></div>
                     <div class="materials-table__col materials-table__col--3">ранункулюс болотний</div>
                     <div class="materials-table__col materials-table__col--4">3 см</div>
-                    <div class="materials-table__col materials-table__col--5">ранункулюс інший</div>
-                    <div class="materials-table__col materials-table__col--6">БОКС 1</div>
-                    <div class="materials-table__col materials-table__col--7 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--5">БОКС 1</div>
+                    <div class="materials-table__col materials-table__col--6 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--7">300 грн.</div>
+                    <div class="materials-table__col materials-table__col--8 materials-table__col--qty">700 од.</div>
                 </div>
                 <div class="materials-table__row materials-table__row--yellow">
                     <div class="materials-table__col materials-table__col--1">АА01</div>
                     <div class="materials-table__col materials-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="materials-table__img open-image"></div>
                     <div class="materials-table__col materials-table__col--3">ранункулюс болотний</div>
                     <div class="materials-table__col materials-table__col--4">3 см</div>
-                    <div class="materials-table__col materials-table__col--5">ранункулюс інший</div>
-                    <div class="materials-table__col materials-table__col--6">БОКС 1</div>
-                    <div class="materials-table__col materials-table__col--7 materials-table__col--qty">100 од.</div>
+                    <div class="materials-table__col materials-table__col--5">БОКС 1</div>
+                    <div class="materials-table__col materials-table__col--6 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--7">300 грн.</div>
+                    <div class="materials-table__col materials-table__col--8 materials-table__col--qty">700 од.</div>
                 </div>
                 <div class="materials-table__row  materials-table__row--red">
                     <div class="materials-table__col materials-table__col--1">АА01</div>
                     <div class="materials-table__col materials-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="materials-table__img open-image"></div>
                     <div class="materials-table__col materials-table__col--3">ранункулюс болотний</div>
                     <div class="materials-table__col materials-table__col--4">3 см</div>
-                    <div class="materials-table__col materials-table__col--5">ранункулюс інший</div>
-                    <div class="materials-table__col materials-table__col--6">БОКС 1</div>
-                    <div class="materials-table__col materials-table__col--7 materials-table__col--qty">10 од.</div>
+                    <div class="materials-table__col materials-table__col--5">БОКС 1</div>
+                    <div class="materials-table__col materials-table__col--6 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--7">300 грн.</div>
+                    <div class="materials-table__col materials-table__col--8 materials-table__col--qty">700 од.</div>
                 </div>
                 <div class="materials-table__row materials-table__row--empty">
                     <div class="materials-table__col materials-table__col--1">АА01</div>
                     <div class="materials-table__col materials-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="materials-table__img open-image"></div>
                     <div class="materials-table__col materials-table__col--3">ранункулюс болотний</div>
                     <div class="materials-table__col materials-table__col--4">3 см</div>
-                    <div class="materials-table__col materials-table__col--5">ранункулюс інший</div>
-                    <div class="materials-table__col materials-table__col--6">БОКС 1</div>
-                    <div class="materials-table__col materials-table__col--7 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--5">БОКС 1</div>
+                    <div class="materials-table__col materials-table__col--6 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--7">300 грн.</div>
+                    <div class="materials-table__col materials-table__col--8 materials-table__col--qty">700 од.</div>
                 </div>
                 <div class="materials-table__row">
                     <div class="materials-table__col materials-table__col--1">АА01</div>
                     <div class="materials-table__col materials-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="materials-table__img open-image"></div>
                     <div class="materials-table__col materials-table__col--3">ранункулюс болотний</div>
                     <div class="materials-table__col materials-table__col--4">3 см</div>
-                    <div class="materials-table__col materials-table__col--5">ранункулюс інший</div>
-                    <div class="materials-table__col materials-table__col--6">БОКС 1</div>
-                    <div class="materials-table__col materials-table__col--7 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--5">БОКС 1</div>
+                    <div class="materials-table__col materials-table__col--6 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--7">300 грн.</div>
+                    <div class="materials-table__col materials-table__col--8 materials-table__col--qty">700 од.</div>
                 </div>
                 <div class="materials-table__row">
                     <div class="materials-table__col materials-table__col--1">АА01</div>
                     <div class="materials-table__col materials-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="materials-table__img open-image"></div>
                     <div class="materials-table__col materials-table__col--3">ранункулюс болотний</div>
                     <div class="materials-table__col materials-table__col--4">3 см</div>
-                    <div class="materials-table__col materials-table__col--5">ранункулюс інший</div>
-                    <div class="materials-table__col materials-table__col--6">БОКС 1</div>
-                    <div class="materials-table__col materials-table__col--7 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--5">БОКС 1</div>
+                    <div class="materials-table__col materials-table__col--6 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--7">300 грн.</div>
+                    <div class="materials-table__col materials-table__col--8 materials-table__col--qty">700 од.</div>
                 </div>
                 <div class="materials-table__row">
                     <div class="materials-table__col materials-table__col--1">АА01</div>
                     <div class="materials-table__col materials-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="materials-table__img open-image"></div>
                     <div class="materials-table__col materials-table__col--3">ранункулюс болотний</div>
                     <div class="materials-table__col materials-table__col--4">3 см</div>
-                    <div class="materials-table__col materials-table__col--5">ранункулюс інший</div>
-                    <div class="materials-table__col materials-table__col--6">БОКС 1</div>
-                    <div class="materials-table__col materials-table__col--7 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--5">БОКС 1</div>
+                    <div class="materials-table__col materials-table__col--6 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--7">300 грн.</div>
+                    <div class="materials-table__col materials-table__col--8 materials-table__col--qty">700 од.</div>
                 </div>
                 <div class="materials-table__row">
                     <div class="materials-table__col materials-table__col--1">АА01</div>
                     <div class="materials-table__col materials-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="materials-table__img open-image"></div>
                     <div class="materials-table__col materials-table__col--3">ранункулюс болотний</div>
                     <div class="materials-table__col materials-table__col--4">3 см</div>
-                    <div class="materials-table__col materials-table__col--5">ранункулюс інший</div>
-                    <div class="materials-table__col materials-table__col--6">БОКС 1</div>
-                    <div class="materials-table__col materials-table__col--7 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--5">БОКС 1</div>
+                    <div class="materials-table__col materials-table__col--6 materials-table__col--qty">300 од.</div>
+                    <div class="materials-table__col materials-table__col--7">300 грн.</div>
+                    <div class="materials-table__col materials-table__col--8 materials-table__col--qty">700 од.</div>
                 </div>
-                <div class="materials-table__row">
-                <div class="materials-table__col materials-table__col--1">АА01</div>
-                <div class="materials-table__col materials-table__col--2"><img src="img/img-material.jpg" alt="Ранункулюс болотний" class="materials-table__img open-image"></div>
-                <div class="materials-table__col materials-table__col--3">ранункулюс болотний</div>
-                <div class="materials-table__col materials-table__col--4">3 см</div>
-                <div class="materials-table__col materials-table__col--5">ранункулюс інший</div>
-                <div class="materials-table__col materials-table__col--6">БОКС 1</div>
-                <div class="materials-table__col materials-table__col--7 materials-table__col--qty">300 од.</div>
-            </div>
             </div>
         </div>
     </div>
@@ -215,6 +205,6 @@
         <img src="img/img-material.jpg" alt="Зображення матеріалу">
     </div>
 </div>
-<script src="js/common.js"></script>
-</body>
-</html>
+<?php
+require('footer.php');
+?>

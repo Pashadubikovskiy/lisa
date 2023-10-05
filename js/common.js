@@ -1,10 +1,10 @@
-let loginForm = document.querySelector('.login__form');
-if (loginForm) {
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        window.location.href = '/lisa/materials.html'
-    })
-}
+// let loginForm = document.querySelector('.login__form');
+// if (loginForm) {
+    // loginForm.addEventListener('submit', (e) => {
+    //     e.preventDefault();
+    //     window.location.href = '/lisa/materials.html'
+    // })
+// }
 
 let preloader = document.querySelector('.preloader');
 if (preloader) {
@@ -138,3 +138,34 @@ if (document.querySelector('.recept-add-comment')) {
         document.querySelector('.recept-add-comment').remove()
     })
 }
+
+
+
+$(document).ready(function() {
+    $("#login-form").submit(function(event) {
+        event.preventDefault(); // Заборона перезавантаження сторінки при відправці форми
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        $.ajax({
+            type: "POST",
+            url: "requests/login.php",
+            data: {
+                username: username,
+                password: password
+            },
+            success: function(response) {
+                if (response === "success") {
+                    // Вхід успішний
+                    window.location.href = "materials.php"; // Перенаправлення на сторінку ласкаво просимо
+                } else {
+                    // Невірний логін або пароль
+                    alert(response)
+                }
+            },
+            error: function(response) {
+                console.log(response); // Виведення тексту помилки у консоль
+            }
+        });
+    });
+});
