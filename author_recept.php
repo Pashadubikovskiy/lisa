@@ -1,6 +1,6 @@
 <?php
 require_once('login-check.php');
-require('header.php');
+require('components/header.php');
 echo  insertHeader('author_recept');
 ?>
 <div class="page page--author-recept">
@@ -90,5 +90,5 @@ echo  insertHeader('author_recept');
     </div>
 </div>
 <?php
-require('footer.php');
+require('components/footer.php');
 ?>

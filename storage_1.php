@@ -1,6 +1,6 @@
 <?php
 require_once('login-check.php');
-require('header.php');
+require('components/header.php');
 echo  insertHeader('storage_1');
 ?>
 <div class="page page--storage-1">
@@ -22,10 +22,10 @@ echo  insertHeader('storage_1');
                 <div class="storage-content__text">Червоних (<10)</div>
                 <div class="storage-content__number">65</div>
             </div>
-            <button class="storage-content__btn storage-content__btn--save">сформувати</button>
+            <a class="storage-content__btn storage-content__btn--save" href="storage_2.php">сформувати</a>
         </div>
     </div>
 </div>
 <?php
-require('footer.php');
+require('components/footer.php');
 ?>

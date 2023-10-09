@@ -1,5 +1,5 @@
 <?php
-require('header.php');
+require('components/header.php');
 echo  insertHeader('login');
 ?>
     <div class="page">
@@ -33,5 +33,5 @@ echo  insertHeader('login');
     </div>
 
 <?php
-require('footer.php');
+require('components/footer.php');
 ?>

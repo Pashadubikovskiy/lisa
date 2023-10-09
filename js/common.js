@@ -142,6 +142,60 @@ if (document.querySelector('.recept-add-comment')) {
 
 
 $(document).ready(function() {
+    if ($('.page__close').length > 0) {
+        $('.page__close').click(function (e) {
+            e.preventDefault();
+            $(this).closest('.page').removeClass('opened')
+        })
+    }
+    if ($('.burger-menu-list-item__link--new-material').length > 0) {
+        $('.burger-menu-list-item__link--new-material').click(function (e) {
+            e.preventDefault();
+            $('.page--new-material').addClass('opened')
+        })
+    }
+    if ($('.page-form--new-material')) {
+        $('.page-form--new-material').submit(function(e) {
+            e.preventDefault();
+            // Получение значений из формы
+            var category = $("#category").val();
+            var sku = $("#sku").val();
+            var name = $("#name").val();
+            var size = $("#size").val();
+            var price = $("#price").val();
+            var qty = $("#qty").val();
+            var place = $("#place").val();
+            var file = $("#myFile")[0].files[0];
+
+            // Создание объекта FormData для передачи данных
+            var formData = new FormData();
+            formData.append("category", category);
+            formData.append("sku", sku);
+            formData.append("name", name);
+            formData.append("size", size);
+            formData.append("price", price);
+            formData.append("qty", qty);
+            formData.append("place", place);
+            formData.append("myFile", file);
+
+            // Отправка AJAX-запроса на сервер
+            $.ajax({
+                url: "requests/new-material.php", // Укажите путь к скрипту на сервере для обработки запроса
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // Обработка ответа от сервера (например, вывод сообщения об успешной вставке)
+                    alert(response);
+                },
+                error: function() {
+                    // Обработка ошибок при запросе
+                    alert("При отправке запроса произошла ошибка.");
+                }
+            });
+        });
+    }
     $("#login-form").submit(function(event) {
         event.preventDefault(); // Заборона перезавантаження сторінки при відправці форми
         var username = $("#username").val();

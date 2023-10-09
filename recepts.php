@@ -1,6 +1,6 @@
 <?php
 require_once('login-check.php');
-require('header.php');
+require('components/header.php');
 echo  insertHeader('recepts');
 ?>
 <div class="page page--recepts">
@@ -47,17 +47,17 @@ echo  insertHeader('recepts');
                         </a>
                     </li>
                     <li class="burger-menu-list__item burger-menu-list-item">
-                        <a href="#" class="burger-menu-list-item__link">
-                            на головну
+                        <a href="materials.php" class="burger-menu-list-item__link">
+                            матеріали
                         </a>
                     </li>
                     <li class="burger-menu-list__item burger-menu-list-item">
-                        <a href="#" class="burger-menu-list-item__link">
+                        <a href="storage_1.php" class="burger-menu-list-item__link">
                             склад
                         </a>
                     </li>
                     <li class="burger-menu-list__item burger-menu-list-item">
-                        <a href="#" class="burger-menu-list-item__link">
+                        <a href="analitic_materials.php" class="burger-menu-list-item__link">
                             аналітика
                         </a>
                     </li>
@@ -475,5 +475,5 @@ echo  insertHeader('recepts');
     </div>
 </div>
 <?php
-require('footer.php');
+require('components/footer.php');
 ?>

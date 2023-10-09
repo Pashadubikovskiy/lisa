@@ -1,6 +1,6 @@
 <?php
 require_once('login-check.php');
-require('header.php');
+require('components/header.php');
 echo  insertHeader('storage_2');
 ?>
 
@@ -278,5 +278,5 @@ echo  insertHeader('storage_2');
     </div>
 </div>
 <?php
-require('footer.php');
+require('components/footer.php');
 ?>

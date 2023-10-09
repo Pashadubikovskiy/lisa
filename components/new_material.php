@@ -1,21 +1,15 @@
-<?php
-require_once('login-check.php');
-require('header.php');
-echo  insertHeader('new_material');
-?>
+<link rel="stylesheet" href="scss/new_material.css">
 <div class="page page--new-material">
     <div class="page__container">
-        <form class="page__form page-form">
+        <form class="page__form page-form page-form--new-material">
             <div class="page-form__col">
                 <select name="category" id="category" class="page-form__select">
-                    <option value="0">головки квітів текстильні</option>
-                    <option value="1">головки квітів текстильні</option>
-                    <option value="2">головки квітів текстильні</option>
-                    <option value="3">головки квітів текстильні</option>
+                    <option value="1">головки квітів</option>
+                    <option value="2">бутоньєрки</option>
                 </select>
                 <div class="page-form__photo drop-zone">
                     <span class="drop-zone__prompt">додати фото</span>
-                    <input type="file" name="myFile" class="drop-zone__input">
+                    <input type="file" name="myFile" id="myFile" class="drop-zone__input">
                 </div>
                 <div class="page-form__row">
                     <label class="page-form__label">
@@ -74,7 +68,6 @@ echo  insertHeader('new_material');
             </div>
         </form>
     </div>
+
+    <button class="page__close">X</button>
 </div>
-<?php
-require('footer.php');
-?>
