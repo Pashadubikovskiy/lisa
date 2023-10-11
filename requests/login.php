@@ -1,27 +1,34 @@
 <?php
+require_once('db_connect.php');
 
-
-// Обробка введеного логіну та пароля
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST["username"];
-    $password = $_POST["password"];
+    if (isset($_POST["username"]) && isset($_POST["password"])) {
+        $username = $_POST["username"];
+        $password = $_POST["password"];
 
-    // Перевірка логіну та пароля в базі даних
-    $query = "SELECT * FROM lisa_users WHERE Login = :username AND Password = :password";
-    $stmt = $conn->prepare($query);
-    $stmt->bindParam(":username", $username);
-    $stmt->bindParam(":password", $password);
-    $stmt->execute();
+        // Захист від SQL-ін'єкцій
+        $username = $conn->real_escape_string($username);
+        $password = $conn->real_escape_string($password);
 
-    // Перевірка результату запиту
-    if ($stmt->rowCount() == 1) {
-        // Вхід успішний
-        session_start();
-        $_SESSION["username"] = $username;
-        echo "success"; // Повідомлення про успішну автентифікацію
+        // Підготовка та виконання запиту
+        $query = "SELECT * FROM lisa_users WHERE Login = '$username' AND Password = '$password'";
+        $result = $conn->query($query);
+
+        // Перевірка результату запиту
+        if ($result && $result->num_rows == 1) {
+            // Вхід успішний
+            session_start();
+            $_SESSION["username"] = $username;
+            echo "success"; // Повідомлення про успішну автентифікацію
+        } else {
+            // Невірний логін або пароль
+            echo "Невірний логін або пароль"; // Повідомлення про помилку автентифікації
+        }
+
+        // Закриття з'єднання з базою даних
+        $conn->close();
     } else {
-        // Невірний логін або пароль
-        echo "Невірний логін або пароль"; // Повідомлення про помилку автентифікації
+        echo "Не всі необхідні дані були передані.";
     }
 }
 ?>

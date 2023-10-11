@@ -154,18 +154,96 @@ $(document).ready(function() {
             $('.page--new-material').addClass('opened')
         })
     }
+    if ($('.burger-menu-list-item__link--categories').length > 0) {
+        $('.burger-menu-list-item__link--categories').click(function (e) {
+            e.preventDefault();
+            $('.page--categories').addClass('opened')
+        })
+    }
+    if ($('.page-form--new-category').length > 0) {
+        let $form = $('.page-form--new-category');
+        $('.page--categories .btn--save').click(function (e) {
+            e.preventDefault();
+            $form[0].reset();
+            $form.addClass('opened')
+        })
+        $('.page--categories .btn--close').click(function (e) {
+            e.preventDefault();
+            $form.removeClass('opened')
+        })
+
+        $('.btn--edit').click(function (e) {
+            e.preventDefault();
+
+
+            let $id = $(this).closest('.categories__item').data('id');
+            let $name = $(this).closest('.categories__item').find('.categories__item-name').text().trim();
+
+            $form.addClass('opened')
+
+            $('#new-category').val($name)
+            $('#new-category').data('id', $id)
+        })
+        $form.submit(function (e){
+            e.preventDefault();
+            let $id;
+            if ($('#new-category').data('id')) {
+                $id = $('#new-category').data('id');
+            } else {
+                $id = 0;
+            }
+            $.ajax({
+                type: "POST",
+                url: "requests/category.php",
+                data: {
+                    id: $id,
+                    name: $('#new-category').val(),
+                },
+                success: function(data) {
+                    alert(data)
+                    $form[0].reset();
+                    $form.removeClass('opened')
+                },
+                error: function() {
+                    console.error('Помилка запиту');
+                }
+            });
+        })
+    }
     if ($('.page-form--new-material')) {
+        $('.page-form--new-material .page-form__btn--delete').click(function(e) {
+            e.preventDefault();
+            let $form = $('.page-form--new-material');
+            let $sku = $form.find('#sku').val()
+            $.ajax({
+                type: "POST",
+                url: "requests/delete-material.php",
+                data: {
+                    sku: $sku,
+                },
+                success: function(response) {
+                    $('.page-form--new-material')[0].reset();
+                    $('.page--new-material').removeClass('opened');
+                    alert(response);
+                },
+                error: function() {
+                    console.error('Помилка запиту');
+                }
+            });
+        })
         $('.page-form--new-material').submit(function(e) {
             e.preventDefault();
             // Получение значений из формы
             var category = $("#category").val();
             var sku = $("#sku").val();
-            var name = $("#name").val();
+            var name = $("#materialname").val();
             var size = $("#size").val();
             var price = $("#price").val();
             var qty = $("#qty").val();
+            var analogs = $("#analogs").val();
             var place = $("#place").val();
             var file = $("#myFile")[0].files[0];
+            var changes = $("#changes").val();
 
             // Создание объекта FormData для передачи данных
             var formData = new FormData();
@@ -175,8 +253,12 @@ $(document).ready(function() {
             formData.append("size", size);
             formData.append("price", price);
             formData.append("qty", qty);
+            formData.append("analogs", analogs);
             formData.append("place", place);
-            formData.append("myFile", file);
+            formData.append("changes", changes);
+            if (file) {
+                formData.append("myFile", file);
+            }
 
             // Отправка AJAX-запроса на сервер
             $.ajax({
@@ -187,7 +269,8 @@ $(document).ready(function() {
                 contentType: false,
                 success: function(response) {
                     // Обработка ответа от сервера (например, вывод сообщения об успешной вставке)
-                    alert(response);
+                    $('.page-form--new-material')[0].reset();
+                    $('.page--new-material').removeClass('opened');
                 },
                 error: function() {
                     // Обработка ошибок при запросе
@@ -196,17 +279,61 @@ $(document).ready(function() {
             });
         });
     }
+
+    $('.materials-table__row').click(function (){
+        $sku = $(this).find('.materials-table__col--1').text()
+        $.ajax({
+            type: "POST",
+            url: "requests/change-material.php",
+            data: {
+                sku: $sku,
+            },
+            dataType: 'json',
+            success: function(data) {
+                // Отримані дані у форматі JSON
+                // Ви можете їх обробити, наприклад, вивести або використати для подальших дій
+                console.log(data);
+                $('.page--new-material').addClass('opened')
+                $('#sku').val(data.sku)
+                $('#qty').val(data.count)
+                $('#place').val(data.placement)
+                $('#analogs').val(data.analogs)
+                $('#materialname').val(data.name)
+                $('#size').val(data.size)
+                $('#price').val(data.price)
+                $('#category').val(data.category)
+                $('#changes').val('true')
+
+                let dropZoneElement = document.querySelector(".drop-zone");
+                let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
+                // First time - there is no thumbnail element, so lets create it
+                if (!thumbnailElement && data.image) {
+                    thumbnailElement = document.createElement("div");
+                    thumbnailElement.classList.add("drop-zone__thumb");
+                    dropZoneElement.appendChild(thumbnailElement);
+                    $('.drop-zone__prompt').remove();
+                    $('.drop-zone__thumb').css('background-image', 'url(' + data.image + ')');
+                }
+
+
+                // updateThumbnail(dropZoneElement, data.image);
+            },
+            error: function() {
+                console.error('Помилка запиту');
+            }
+        });
+    })
     $("#login-form").submit(function(event) {
         event.preventDefault(); // Заборона перезавантаження сторінки при відправці форми
-        var username = $("#username").val();
-        var password = $("#password").val();
+        var $username = $("#username").val();
+        var $password = $("#password").val();
 
         $.ajax({
             type: "POST",
             url: "requests/login.php",
             data: {
-                username: username,
-                password: password
+                username: $username,
+                password: $password
             },
             success: function(response) {
                 if (response === "success") {

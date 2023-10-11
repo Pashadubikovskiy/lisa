@@ -1,6 +1,6 @@
 <?php
 require('components/header.php');
-echo  insertHeader('login');
+echo insertHeader('login');
 ?>
     <div class="page">
         <div class="page__decor page-decor">

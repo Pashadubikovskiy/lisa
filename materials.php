@@ -40,8 +40,13 @@ $result = $conn->query($sql_categories);
                 <button class="burger-menu__close">X</button>
                 <ul class="burger-menu__list burger-menu-list">
                     <li class="burger-menu-list__item burger-menu-list-item">
+                        <a href="#" class="burger-menu-list-item__link burger-menu-list-item__link--categories">
+                            категорії
+                        </a>
+                    </li>
+                    <li class="burger-menu-list__item burger-menu-list-item">
                         <a href="#" class="burger-menu-list-item__link burger-menu-list-item__link--new-material">
-                            додати новий
+                            додати новий матеріал
                         </a>
                     </li>
                     <li class="burger-menu-list__item burger-menu-list-item">
@@ -94,6 +99,7 @@ $result = $conn->query($sql_categories);
     </div>
 </div>
 <?php require('components/new_material.php'); ?>
+<?php require('components/categories.php'); ?>
 
 <div class="overlay">
     <div class="overlay__container">

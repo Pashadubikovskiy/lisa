@@ -1,9 +1,110 @@
 @function vw($px-vw, $base-vw: 1728) {
   @return ($px-vw * 100vw) / $base-vw;
 }
+.btn {
+  border-radius: 25px;
+  padding: 8px 20px 13px;
+  min-width: 214px;
+  font-size: 22px;
+  line-height: 20px;
+  color: #000;
+  transition: .3s;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: auto;
+  margin-right: auto;
 
-.page {
+  &--edit {
+    padding: 2px;
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: 0;
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  &--save {
+    background: #BBEAD1;
+    margin-bottom: 22px;
+
+    &:hover {
+      background: #68efa9;
+    }
+  }
+}
+.categories {
+  &__item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+  }
+}
+.page-form--new-category {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: #fff;
+  padding: 30px;
+  width: 100%;
   height: 100%;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+
+  &.opened {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .btn--close {
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 1.5rem;
+    font-size: 25px;
+    &:hover {
+      color: #0B1AA5;
+    }
+  }
+}
+.page {
+  h1, h2 {
+    font-size: 24px;
+  }
+  height: 100%;
+  &--categories {
+    display: flex;
+    background: url('../img/flower1.png') no-repeat left bottom / auto 100%, url('../img/flower2.png') no-repeat right bottom / 861px 900px;
+    background-color: #f2f2f2;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+
+    &.opened {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
   &--new-material {
     display: flex;
     background: url('../img/flower1.png') no-repeat left bottom / auto 100%, url('../img/flower2.png') no-repeat right bottom / 861px 900px;
@@ -30,10 +131,19 @@
     height: 619px;
     padding: 53px 80px;
     background-color: #fff;
+    position: relative;
+    overflow: auto;
   }
   &__form {
     display: flex;
     gap: 96px;
+  }
+
+  .categories {
+    font-size: 20px;
+    padding: 0;
+    margin: 0 0 20px;
+    list-style: none;
   }
 }
 .page-form {
