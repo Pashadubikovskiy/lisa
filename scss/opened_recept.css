@@ -30,16 +30,29 @@ body {
 .page {
   height: 100%;
 }
-.page--change-recept {
+.page--select-recept {
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  background: #fff;
+}
+.page--select-recept.opened {
+  opacity: 1;
+  pointer-events: all;
 }
 
-.change-recept {
+.select-recept {
   display: flex;
   align-items: center;
   margin-right: 30px;
 }
-.change-recept__sidebar {
+.select-recept__sidebar {
   background: url("../img/sidebar-top.png") no-repeat -40px top/42.2rem 84.4rem, url("../img/sidebar-bottom.png") no-repeat -100px bottom/600px auto;
   padding: 57px 50px 86px 140px;
   min-width: 520px;
@@ -47,13 +60,13 @@ body {
   display: flex;
   flex-direction: column;
 }
-.change-recept__table {
+.select-recept__table {
   overflow: auto;
-  height: calc(100% - 7rem);
+  height: calc(100% - 32rem);
   border-top: 0.1rem solid #D2CBCB;
   border-bottom: 0.1rem solid #D2CBCB;
 }
-.change-recept__input {
+.select-recept__input {
   margin-top: 8px;
   background: #FFFFFF;
   border: 1px solid #A49C9C;
@@ -64,7 +77,7 @@ body {
   line-height: 35px;
   min-height: 40px;
 }
-.change-recept__input--name {
+.select-recept__input--name {
   font-size: 25px;
   line-height: 35px;
   border: none;
@@ -73,13 +86,13 @@ body {
   margin-bottom: 34px;
   margin-top: 0;
 }
-.change-recept__input--name::placeholder {
+.select-recept__input--name::placeholder {
   color: #A49C9C;
 }
-.change-recept__photo {
+.select-recept__photo {
   margin-bottom: 60px;
 }
-.change-recept__btn {
+.select-recept__btn {
   border-radius: 25px;
   padding: 8px 10px 16px;
   min-width: 214px;
@@ -94,26 +107,30 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.change-recept__btn--save {
+.select-recept__btn--save {
   background: #BBEAD1;
   margin-bottom: 22px;
 }
-.change-recept__btn--save:hover {
+.select-recept__btn--save[disabled] {
+  filter: grayscale(1);
+  pointer-events: none;
+}
+.select-recept__btn--save:hover {
   background: #68efa9;
 }
-.change-recept__label {
+.select-recept__label {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   font-size: 25px;
   line-height: 35px;
 }
-.change-recept__links {
+.select-recept__links {
   margin-top: 25px;
   list-style: none;
   padding-left: 0;
 }
-.change-recept__textarea {
+.select-recept__textarea {
   background: #FEEAE8;
   border: 1px solid #A49C9C;
   color: #A00202;
@@ -193,7 +210,7 @@ body {
   text-align: center;
 }
 
-.change-recept-link__label {
+.select-recept-link__label {
   font-size: 25px;
   line-height: 35px;
   color: #000000;
@@ -201,10 +218,10 @@ body {
   position: relative;
   transition: opacity 0.3s;
 }
-.change-recept-link__label:hover {
+.select-recept-link__label:hover {
   opacity: 0.7;
 }
-.change-recept-link__label--plus::before {
+.select-recept-link__label--plus::before {
   position: absolute;
   content: "+";
   top: 65%;
@@ -212,24 +229,24 @@ body {
   transform: translateY(-50%);
 }
 
-.change-recept-table__row {
+.select-recept-table__row {
   color: #000;
   font-weight: 600;
 }
-.change-recept-table__row--empty {
+.select-recept-table__row--empty {
   color: #A49C9C;
 }
-.change-recept-table__row--empty button {
+.select-recept-table__row--empty button {
   pointer-events: none;
 }
-.change-recept-table__row:hover {
+.select-recept-table__row:hover {
   background-color: #fff7f7;
 }
-.change-recept-table__row {
+.select-recept-table__row {
   display: grid;
   grid-template-columns: 0.7fr 1fr 2.3fr 0.7fr 0.7fr 0.7fr 0.7fr;
 }
-.change-recept-table__col {
+.select-recept-table__col {
   border: 0.1rem solid #D2CBCB;
   border-top: none;
   display: flex;
@@ -238,13 +255,13 @@ body {
   font-size: 17px;
   line-height: 18px;
 }
-.change-recept-table__col--2 {
+.select-recept-table__col--2 {
   padding: 0;
 }
-.change-recept-table__col--7 {
+.select-recept-table__col--7 {
   justify-content: center;
 }
-.change-recept-table__img {
+.select-recept-table__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -327,7 +344,8 @@ body {
   height: 336px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  overflow: auto;
+  justify-content: flex-start;
   flex-direction: column;
   padding: 40px 85px 50px 65px;
 }
@@ -386,6 +404,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: 0.3s;
+  z-index: 29;
 }
 .overlay--is-active {
   opacity: 1;
@@ -423,6 +442,11 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.select-recept .select-recept__sidebar textarea,
+.select-recept .select-recept__sidebar input {
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=opened_recept.css.map */

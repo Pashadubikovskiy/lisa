@@ -30,7 +30,7 @@ body {
 .page {
   height: 100%;
 }
-.page--materials {
+.page--analitics {
   display: flex;
 }
 .page__name {
@@ -115,6 +115,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: 0.3s;
+  z-index: 2;
 }
 .burger__menu--is-opened {
   opacity: 1;
@@ -159,20 +160,22 @@ body {
   color: #0B1AA5;
 }
 
-.materials__search {
+.analitics__search {
   margin-bottom: 16px;
 }
-.materials__table {
+.analitics__table {
   overflow: auto;
   height: calc(100% - 7rem);
   border-top: 0.1rem solid #D2CBCB;
   border-bottom: 0.1rem solid #D2CBCB;
 }
 
-.materials-search {
+.analitics-search {
+  position: relative;
+  z-index: 2;
   padding-left: 28px;
 }
-.materials-search__input {
+.analitics-search__input {
   border: 1px solid #A49C9C;
   border-radius: 25px;
   font-weight: 400;
@@ -184,44 +187,44 @@ body {
   padding: 9px;
   outline: none;
 }
-.materials-search__input::placeholder {
+.analitics-search__input::placeholder {
   color: #A49C9C;
 }
-.materials-search__input:focus {
+.analitics-search__input:focus {
   border-color: #A49C9C;
 }
-.materials-search__input:focus::placeholder {
+.analitics-search__input:focus::placeholder {
   color: transparent;
 }
 
-.materials-table__header .materials-table__col {
+.analitics-table__header .analitics-table__col {
   border-top: 0.1rem solid #D2CBCB;
   padding: 3rem;
 }
-.materials-table__row {
+.analitics-table__row {
   cursor: pointer;
 }
-.materials-table__row--empty {
+.analitics-table__row--empty {
   cursor: not-allowed;
   filter: grayscale(1);
 }
-.materials-table__row--yellow .materials-table__col--qty {
+.analitics-table__row--yellow .analitics-table__col--qty {
   color: #CD8F32;
 }
-.materials-table__row--red .materials-table__col--qty {
+.analitics-table__row--red .analitics-table__col--qty {
   color: #F40909;
 }
-.materials-table__row:hover {
+.analitics-table__row:hover {
   background-color: #fff7f7;
 }
-.materials-table__header {
+.analitics-table__header {
   margin-top: -60px;
 }
-.materials-table__row, .materials-table__header {
+.analitics-table__row, .analitics-table__header {
   display: grid;
   grid-template-columns: 0.7fr 0.9fr 2fr 0.7fr 0.7fr 0.7fr 0.7fr 0.7fr;
 }
-.materials-table__col {
+.analitics-table__col {
   border: 0.1rem solid #D2CBCB;
   border-top: none;
   display: flex;
@@ -231,16 +234,16 @@ body {
   line-height: 18px;
   text-align: center;
 }
-.materials-table__header .materials-table__col {
+.analitics-table__header .analitics-table__col {
   padding: 0;
   border: none;
   color: #0B1AA5;
   text-align: left;
 }
-.materials-table__col--2 {
+.analitics-table__col--2 {
   padding: 0;
 }
-.materials-table__img {
+.analitics-table__img {
   width: 100%;
   height: 100%;
   object-fit: cover;

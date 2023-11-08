@@ -1,3 +1,12 @@
+a.btn-back {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+}
+
 html {
   font-family: "Poiret One", cursive;
   color: #000;
@@ -32,6 +41,23 @@ body {
 }
 .page--author-recept {
   display: flex;
+}
+.page__close {
+  font-size: 5rem;
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  padding: 2.5rem;
+  background: transparent;
+  color: #867B7B;
+  text-shadow: 0.1rem 0.1rem #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.page__close:hover {
+  color: #0B1AA5;
 }
 
 .author-recept {

@@ -28,11 +28,232 @@ body {
 ::-webkit-scrollbar-thumb {
   background: #D9D2D2;
 }
+.btn {
+  border-radius: 25px;
+  padding: 8px 20px 13px;
+  min-width: 214px;
+  font-size: 22px;
+  line-height: 20px;
+  color: #000;
+  transition: .3s;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: auto;
+  margin-right: auto;
 
+  &--edit {
+    padding: 2px;
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    font-size: 18px;
+    margin-left: auto;
+    margin-right: 0;
+    &:hover {
+      opacity: .7;
+    }
+  }
+
+  &--save {
+    background: #BBEAD1;
+    margin-bottom: 22px;
+
+    &:hover {
+      background: #68efa9;
+    }
+  }
+}
+.categories {
+  &__item {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.page-form {
+  &__row {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  &__col {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__label {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    line-height: 18px;
+  }
+  &__input {
+    margin-top: 6px;
+    background: rgba(213, 217, 254, 0.56);
+    padding: 12px 8px;
+    max-width: 298px;
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    transition: .3s;
+    &:hover {
+      background: rgba(213, 217, 254, 0.8);
+    }
+  }
+  &__select {
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    line-height: 35px;
+    -webkit-appearance: none;
+    padding: 0 10px 5px 26px;
+    margin-bottom: 19px;
+    outline: none;
+    background: url("../img/mdi_cosine-wave.png") no-repeat left center / 19px 19px;
+    transition: .3s;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+  &__photo {
+    margin-bottom: 26px;
+  }
+  &__btn {
+    border-radius: 25px;
+    padding: 8px 10px 16px;
+    min-width: 214px;
+    font-size: 25px;
+    line-height: 25px;
+    color: #000;
+    transition: .3s;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-weight: 500;
+
+    &--save {
+      background: #BBEAD1;
+      margin-top: auto;
+
+      &:hover {
+        background: #68efa9;
+      }
+    }
+    &--delete {
+      background: #FEEAE8;
+      margin-top: 16px;
+      margin-bottom: 16px;
+
+      &:hover {
+        background: #e87f76;
+      }
+    }
+  }
+}
+.page-form--new-category-recepts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: #fff;
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: .3s;
+
+  &.opened {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .btn--close {
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 1.5rem;
+    font-size: 25px;
+    &:hover {
+      color: #0B1AA5;
+    }
+  }
+}
 .page {
+  h1, h2 {
+    font-size: 24px;
+  }
   height: 100%;
   &--new-recept {
+    background: #fff;
     display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+    z-index: 25;
+
+    &.opened {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  &--categories {
+    display: flex;
+    background: url('../img/flower1.png') no-repeat left bottom / auto 100%, url('../img/flower2.png') no-repeat right bottom / 861px 900px;
+    background-color: #f2f2f2;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+
+    &.opened {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+  &__container {
+    width: 855px;
+    height: 619px;
+    padding: 53px 80px;
+    background-color: #fff;
+    position: relative;
+    overflow: auto;
+  }
+  &__form {
+    display: flex;
+    gap: 96px;
+  }
+
+
+
+  .categories {
+    font-size: 20px;
+    padding: 0;
+    margin: 0 0 20px;
+    list-style: none;
   }
 }
 .new-recept {
@@ -50,7 +271,7 @@ body {
   }
   &__table {
     overflow: auto;
-    height: calc(100% - 7rem);
+    height: calc(100% - 32rem);
     border-top: .1rem solid #D2CBCB;
     border-bottom: .1rem solid #D2CBCB;
   }
@@ -81,7 +302,7 @@ body {
     }
   }
   &__photo {
-    margin-bottom: 60px;
+    margin-bottom: 26px;
   }
   &__btn {
     border-radius: 25px;
@@ -274,7 +495,9 @@ body {
   height: 336px;
   display: flex;
   align-items: center;
-  justify-content: center;
+
+  overflow: auto;
+  justify-content: flex-start;
   flex-direction: column;
   padding: 40px 85px 50px 65px ;
 
@@ -337,6 +560,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: .3s;
+  z-index: 29;
 
   &--is-active {
     opacity: 1;

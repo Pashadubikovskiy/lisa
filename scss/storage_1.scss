@@ -1,6 +1,14 @@
 @function vw($px-vw, $base-vw: 1728) {
   @return ($px-vw * 100vw) / $base-vw;
 }
+a.btn-back {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+}
 html {
   font-family: 'Poiret One', cursive;
   color: #000;

@@ -115,6 +115,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: 0.3s;
+  z-index: 2;
 }
 .burger__menu--is-opened {
   opacity: 1;
@@ -194,6 +195,9 @@ body {
   color: transparent;
 }
 
+.recepts-table__body {
+  font-size: 30px;
+}
 .recepts-table__header .recepts-table__col {
   border-top: 0.1rem solid #D2CBCB;
   padding: 3rem;
@@ -220,9 +224,9 @@ body {
   border-top: none;
   display: flex;
   align-items: center;
-  padding: 3rem;
-  font-size: 17px;
-  line-height: 18px;
+  padding: 3rem 2rem;
+  font-size: 1.7rem;
+  line-height: 1.8rem;
   font-weight: 500;
 }
 .recepts-table__col--blue {
@@ -265,6 +269,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: 0.3s;
+  z-index: 29;
 }
 .overlay--is-active {
   opacity: 1;
@@ -296,6 +301,24 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.page__close {
+  font-size: 5rem;
+  position: absolute;
+  right: 2rem;
+  top: 1rem;
+  padding: 2.5rem;
+  background: transparent;
+  color: #867B7B;
+  text-shadow: 0.1rem 0.1rem #fff;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.page__close:hover {
+  color: #0B1AA5;
 }
 
 /*# sourceMappingURL=recepts.css.map */

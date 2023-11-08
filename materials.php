@@ -1,7 +1,7 @@
 <?php
-require_once('login-check.php');
+require_once('components/login-check.php');
 require('components/header.php');
-echo  insertHeader('materials');
+echo insertHeader('materials');
 
 require ('requests/db_connect.php');
 // SQL-запрос для выбора всех категорий
@@ -72,41 +72,21 @@ $result = $conn->query($sql_categories);
             $result2 = $conn->query($sql_materials);
             ?>
             <div class="materials-table__body">
-                <?php
-                // Проверка наличия результатов
-                $isFirstCategory = true;
-                if ($result2->num_rows > 0) {
-                    // Вывод данных
-                    while ($row = $result2->fetch_assoc()) { ?>
-                        <div class="materials-table__row">
-                            <div class="materials-table__col materials-table__col--1"><?php echo $row["sku"];?></div>
-                            <div class="materials-table__col materials-table__col--2"><img src="<?php echo $row["image"];?>" alt="<?php echo $row["name"];?>" class="materials-table__img open-image"></div>
-                            <div class="materials-table__col materials-table__col--3"><?php echo $row["name"];?></div>
-                            <div class="materials-table__col materials-table__col--4"><?php echo $row["size"];?> см</div>
-                            <div class="materials-table__col materials-table__col--5"><?php echo $row["analogs"];?></div>
-                            <div class="materials-table__col materials-table__col--6"><?php echo $row["placement"];?></div>
-                            <div class="materials-table__col materials-table__col--7 materials-table__col--qty"><?php echo $row["count"];?> од.</div>
-                        </div>
-                        <?php
-                        $isFirstCategory = false;
-                    }
-                } else {
-                    echo "Немає матеріалів.";
-                }
-                ?>
+
             </div>
         </div>
     </div>
 </div>
 <?php require('components/new_material.php'); ?>
 <?php require('components/categories.php'); ?>
+<?php require('components/recept_loaded.php'); ?>
 
-<div class="overlay">
-    <div class="overlay__container">
-        <button class="overlay__close">X</button>
-        <img src="img/img-material.jpg" alt="Зображення матеріалу">
+    <div class="overlay overlay-photo">
+        <div class="overlay__container">
+            <button class="overlay__close">X</button>
+            <img src="img/img-material.jpg" alt="Зображення матеріалу">
+        </div>
     </div>
-</div>
 <?php
 require('components/footer.php');
 ?>

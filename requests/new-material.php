@@ -11,6 +11,7 @@ $analogs = $_POST["analogs"];
 $qty = $_POST["qty"];
 $place = $_POST["place"];
 $changes = $_POST["changes"];
+$response = [];
 if ($_FILES["myFile"]) {
 // Обробка завантаженого файлу
     $targetDirectory = "../uploads/";
@@ -27,7 +28,7 @@ if ($_FILES["myFile"]) {
     if (move_uploaded_file($_FILES["myFile"]["tmp_name"], $targetFile)) {
         // Файл успішно завантажений з унікальним іменем
     } else {
-        echo "Помилка при завантаженні файлу.";
+        $response['error'] = "Помилка при завантаженні файлу.";
     }
 }
 // Перевірка чи існує матеріал з таким SKU
@@ -43,20 +44,39 @@ if ($changes == "true" && $existingMaterial) {
     $result = $conn->query($sql);
 
     if ($result) {
-        echo "Матеріал з SKU '$sku' був успішно оновлений.";
+        $response['success'] = "Матеріал оновлений.";
     } else {
-        echo "Помилка при оновленні матеріалу: " . $conn->error;
+        $response['error'] = "Помилка при оновленні матеріалу: " . $conn->error;
     }
 } elseif ($changes == "false" && $existingMaterial) {
     // Видаємо помилку, оскільки changes == false і матеріал вже існує
-    echo "Матеріал з SKU '$sku' вже існує.";
+    $response['error'] = "Матеріал з SKU '$sku' вже існує.";
 } else {
     // Виконуємо INSERT запит, оскільки матеріал не існує
     $sql = "INSERT INTO lisa_materials (category, sku, name, size, price, analogs, count, placement, image) VALUES ('$category', '$sku', '$name', '$size', '$price', '$analogs', '$qty', '$place', '$targetFileDb')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Матеріал успішно доданий в базу даних.";
+        $response['success'] = "Матеріал доданий!";
     } else {
-        echo "Помилка при додаванні матеріалу: " . $conn->error;
+        $response['error'] = "Помилка при додаванні матеріалу: " . $conn->error;
     }
 }
+
+
+
+// Отримання всіх рецептів з таблиці
+$sql_materials = "SELECT * FROM lisa_materials";
+$result_materials = $conn->query($sql_materials);
+
+$materials = [];
+
+if ($result_materials->num_rows > 0) {
+    while ($row_material = $result_materials->fetch_assoc()) {
+        $materials[] = $row_material;
+    }
+}
+// Додайте список рецептів до відповіді
+$response['materials'] = $materials;
+
+// Перетворіть відповідь у формат JSON
+echo json_encode($response);

@@ -31,11 +31,27 @@ body {
 
 .page {
   height: 100%;
-  &--change-recept {
+  &--select-recept {
     display: flex;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: .3s;
+    background: #fff;
+
+    &.opened {
+      opacity: 1;
+      pointer-events: all;
+    }
   }
 }
-.change-recept {
+.select-recept {
   display: flex;
   align-items: center;
   margin-right: 30px;
@@ -50,7 +66,7 @@ body {
   }
   &__table {
     overflow: auto;
-    height: calc(100% - 7rem);
+    height: calc(100% - 32rem);
     border-top: .1rem solid #D2CBCB;
     border-bottom: .1rem solid #D2CBCB;
   }
@@ -101,6 +117,11 @@ body {
     &--save {
       background: #BBEAD1;
       margin-bottom: 22px;
+
+      &[disabled] {
+        filter: grayscale(1);
+        pointer-events: none;
+      }
 
       &:hover {
         background: #68efa9;
@@ -200,7 +221,7 @@ body {
     }
   }
 }
-.change-recept-link {
+.select-recept-link {
   &__label {
     font-size: 25px;
     line-height: 35px;
@@ -224,7 +245,7 @@ body {
     }
   }
 }
-.change-recept-table {
+.select-recept-table {
   &__row {
     color: #000;
     font-weight: 600;
@@ -343,7 +364,8 @@ body {
   height: 336px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  overflow: auto;
+  justify-content: flex-start;
   flex-direction: column;
   padding: 40px 85px 50px 65px ;
 
@@ -406,6 +428,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: .3s;
+  z-index: 29;
 
   &--is-active {
     opacity: 1;
@@ -451,4 +474,8 @@ body {
     height: 100%;
     object-fit: cover;
   }
+}
+.select-recept .select-recept__sidebar textarea,
+.select-recept .select-recept__sidebar input {
+  pointer-events: none;
 }

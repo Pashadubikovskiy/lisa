@@ -115,6 +115,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: 0.3s;
+  z-index: 2;
 }
 .burger__menu--is-opened {
   opacity: 1;
@@ -226,9 +227,9 @@ body {
   border-top: none;
   display: flex;
   align-items: center;
-  padding: 3rem;
-  font-size: 16px;
-  line-height: 18px;
+  padding: 3rem 2rem;
+  font-size: 1.7rem;
+  line-height: 1.8rem;
 }
 .materials-table__col--2 {
   padding: 0;
@@ -253,6 +254,7 @@ body {
   opacity: 0;
   pointer-events: none;
   transition: 0.3s;
+  z-index: 29;
 }
 .overlay--is-active {
   opacity: 1;
