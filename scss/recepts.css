@@ -229,6 +229,9 @@ body {
   line-height: 1.8rem;
   font-weight: 500;
 }
+.recepts-table__col--1 {
+  min-width: 8rem;
+}
 .recepts-table__col--blue {
   color: #0B1AA5;
 }

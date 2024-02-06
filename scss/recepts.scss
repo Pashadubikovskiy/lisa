@@ -253,6 +253,10 @@ body {
     line-height: 1.8rem;
     font-weight: 500;
 
+    &--1 {
+      min-width: 8rem;
+    }
+
     &--blue {
       color: #0B1AA5;
     }

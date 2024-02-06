@@ -62,8 +62,8 @@ function updateThumbnail(dropZoneElement, file) {
     let thumbnailElement = dropZoneElement.querySelector(".drop-zone__thumb");
 
     // First time - remove the prompt
-    if (dropZoneElement.querySelector(".drop-zone__prompt")) {
-        dropZoneElement.querySelector(".drop-zone__prompt").remove();
+    if ($(".drop-zone__prompt").length > 0) {
+        $(".drop-zone__prompt").remove();
     }
 
     // First time - there is no thumbnail element, so lets create it
@@ -106,6 +106,9 @@ $(document).ready(function() {
         $('.burger-menu-list-item__link--new-material').click(function (e) {
             e.preventDefault();
             $('.page--new-material').addClass('opened')
+            $('.page--new-material form')[0].reset()
+            $('.page--new-material .drop-zone__thumb').remove();
+            $('.page--new-material .drop-zone').prepend('<span class="drop-zone__prompt">додати фото</span>')
         })
     }
     if ($('.burger-menu-list-item__link--new-recept').length > 0) {
@@ -165,6 +168,9 @@ $(document).ready(function() {
                         let $successPopup = $('.page--recept-loaded')
                         $successPopup.addClass('opened')
                         $successPopup.find('.page__text').text(data.success)
+                        setTimeout(function (){
+                            $successPopup.removeClass('opened')
+                        }, 2000)
                     } else if (data.error) {
                         alert(data.error)
                         return;
@@ -246,6 +252,9 @@ $(document).ready(function() {
                         let $successPopup = $('.page--recept-loaded')
                         $successPopup.addClass('opened')
                         $successPopup.find('.page__text').text(data.success)
+                        setTimeout(function (){
+                            $successPopup.removeClass('opened')
+                        }, 2000)
                     } else if (data.error) {
                         alert(data.error)
                         return;
@@ -359,6 +368,9 @@ $(document).ready(function() {
                         let $successPopup = $('.page--recept-loaded')
                         $successPopup.addClass('opened')
                         $successPopup.find('.page__text').text(response.success)
+                        setTimeout(function (){
+                            $successPopup.removeClass('opened')
+                        }, 2000)
                     } else if (response.error) {
                         alert(response.error)
                         return;
@@ -366,6 +378,9 @@ $(document).ready(function() {
 
                     $('.page--select-recept').removeClass('opened')
                     $('.page--recept-loaded').addClass('opened')
+                    setTimeout(function (){
+                        $successPopup.removeClass('opened')
+                    }, 2000)
                 },
                 error: function () {
                     // Обробка помилок (якщо потрібно)
@@ -404,10 +419,11 @@ $(document).ready(function() {
                     $row.append($('<div>').addClass('select-recept-table__col select-recept-table__col--2').append($('<img>').attr('src', recipe_material.image).attr('alt', recipe_material.name).addClass('select-recept-table__img open-image')));
                     var $col = $('<div>', { class: 'select-recept-table__col select-recept-table__col--3' });
                     var $select = $('<select>', { name: 'variables_1', id: 'variables_1', class: 'variables-materials' });
-                    var $option = $('<option>', { value: recipe_material.material_sku, text: recipe_material.name, disabled: recipe_material.count < recipe_material.material_count, selected: 'true' });
+                    var $option = $('<option>', { value: recipe_material.material_sku, text: recipe_material.name, disabled: parseInt(recipe_material.count) < parseInt(recipe_material.material_count), selected: parseInt(recipe_material.count) > parseInt(recipe_material.material_count) });
 
                     var materialSkuToCheck = recipe_material.material_sku;
                     var materialsReplacements = response.materials_replacements;
+
 
                     var matchingObjects = materialsReplacements.filter(function(replacement) {
                         return replacement.original_sku === materialSkuToCheck;
@@ -415,12 +431,13 @@ $(document).ready(function() {
 
                     if (matchingObjects.length > 0) {
                         matchingObjects.forEach(function(matchingObject) {
-                            var $option = $('<option>', { value: matchingObject.material_sku, text: matchingObject.name, disabled: matchingObject.count < matchingObject.material_count });
+                            var $option = $('<option>', { value: matchingObject.material_sku, text: matchingObject.name, disabled: parseInt(matchingObject.count) < parseInt(matchingObject.material_count) });
                             $select.append($option);
                         });
                     }
 
                     $col.append($select.append($option));
+
                     $row.append($col)
 
                     $row.append($('<div>').addClass('select-recept-table__col select-recept-table__col--4').text(recipe_material.size + 'см'));
@@ -437,6 +454,15 @@ $(document).ready(function() {
 
                     // Додайте створений рядок до .select-recept-table__body
                     $tableBody.append($row);
+
+
+// Перевірка, чи всі опції встановлені в disabled
+                    var allOptionsDisabled = $select.find('option:disabled').length === $select.find('option').length;
+
+// Якщо всі опції встановлені в disabled, додати клас до елементу .select-recept-table__row
+                    if (allOptionsDisabled) {
+                        $('.select-recept-table__row').addClass('select-recept-table__row--is-red');
+                    }
                 });
             },
             error: function() {
@@ -454,19 +480,24 @@ $(document).ready(function() {
 
         // Масиви для збереження даних
         var skuValues = [];
+        var countingValues = [];
 
         // Збір даних з рядків, де відмічений чекбокс
         $('.author-recept-table__row').each(function () {
             var $checkbox = $(this).find('input[type="checkbox"]');
             if ($checkbox.prop('checked')) {
                 var sku = $(this).find('.author-recept-table__col--1').text();
+                var counting = parseInt($(this).find('.counting').text());
                 skuValues.push(sku);
+                countingValues.push(counting);
             }
         });
 
+
         // Підготовка даних для відправки на сервер
         var requestData = {
-            skuValues: skuValues
+            skuValues: skuValues,
+            countingValues: countingValues
         };
 
         // Відправка Ajax-запиту на сервер
@@ -481,6 +512,10 @@ $(document).ready(function() {
                     $successPopup.addClass('opened')
                     $successPopup.find('.page__text').text(response.success)
 
+                    setTimeout(function (){
+                        $successPopup.removeClass('opened')
+                    }, 2000)
+
                     $('.author-recept-table__body').empty();
                 } else if (response.error) {
                     alert(response.error)
@@ -489,6 +524,10 @@ $(document).ready(function() {
 
                 $('.page--select-recept').removeClass('opened')
                 $('.page--recept-loaded').addClass('opened')
+
+                setTimeout(function (){
+                    $successPopup.removeClass('opened')
+                }, 2000)
             },
             error: function () {
                 // Обробка помилок (якщо потрібно)
@@ -588,6 +627,9 @@ $(document).ready(function() {
                     let $successPopup = $('.page--recept-loaded')
                     $successPopup.addClass('opened')
                     $successPopup.find('.page__text').text(response.success)
+                    setTimeout(function (){
+                        $successPopup.removeClass('opened')
+                    }, 2000)
                 } else if (response.error) {
                     alert(response.error)
                     return;
@@ -621,6 +663,9 @@ $(document).ready(function() {
                     let $successPopup = $('.page--recept-loaded')
                     $successPopup.addClass('opened')
                     $successPopup.find('.page__text').text(response.success)
+                    setTimeout(function (){
+                        $successPopup.removeClass('opened')
+                    }, 2000)
                 } else if (response.error) {
                     alert(response.error)
                     return;
@@ -655,6 +700,9 @@ $(document).ready(function() {
                         let $successPopup = $('.page--recept-loaded')
                         $successPopup.addClass('opened')
                         $successPopup.find('.page__text').text(response.success)
+                        setTimeout(function (){
+                            $successPopup.removeClass('opened')
+                        }, 2000)
                     } else if (response.error) {
                         alert(response.error)
                         return;
@@ -690,6 +738,10 @@ $(document).ready(function() {
                             let $successPopup = $('.page--recept-loaded')
                             $successPopup.addClass('opened')
                             $successPopup.find('.page__text').text(response.success)
+
+                            setTimeout(function (){
+                                $successPopup.removeClass('opened')
+                            }, 2000)
                         } else if (response.error) {
                             alert(response.error)
                             return;
@@ -716,6 +768,9 @@ $(document).ready(function() {
                             let $successPopup = $('.page--recept-loaded')
                             $successPopup.addClass('opened')
                             $successPopup.find('.page__text').text(response.success)
+                            setTimeout(function (){
+                                $successPopup.removeClass('opened')
+                            }, 2000)
                         } else if (response.error) {
                             alert(response.error)
                             return;
@@ -758,6 +813,9 @@ $(document).ready(function() {
                         let $successPopup = $('.page--recept-loaded')
                         $successPopup.addClass('opened')
                         $successPopup.find('.page__text').text(response.success)
+                        setTimeout(function (){
+                            $successPopup.removeClass('opened')
+                        }, 2000)
                     }
 
                     if ($('.page--recepts .page-category__link').length > 0) {
@@ -816,6 +874,9 @@ $(document).ready(function() {
                         let $successPopup = $('.page--recept-loaded')
                         $successPopup.addClass('opened')
                         $successPopup.find('.page__text').text(response.success)
+                        setTimeout(function (){
+                            $successPopup.removeClass('opened')
+                        }, 2000)
                     } else if (response.error) {
                         alert(response.error)
                         return;
@@ -886,7 +947,7 @@ $(document).ready(function() {
             alert("Не знайдено жодного рядка для створення PDF.");
             return;
         }
-
+        var $i = 0;
         tableRows.each(function() {
             var columns = $(this).find(".storage-creating-table__col");
 
@@ -895,8 +956,9 @@ $(document).ready(function() {
                 var name = columns.eq(2).text();
                 var size = columns.eq(3).text();
 
-                docDefinition.content.push('\n', article + '     ' + name + '     ' + size);
+                docDefinition.content.push('\n', $i + '.     ' + article + '     ' + name + '     ' + size);
             }
+            $i++;
         });
 
         if (docDefinition.content.length <= 1) {
@@ -927,7 +989,10 @@ $(document).ready(function() {
         $('.page-category__link--is-active').removeClass('page-category__link--is-active');
         $(this).addClass('page-category__link--is-active')
     })
-    $(document).on('click', '.materials-table__row', function () {
+    $(document).on('click', '.materials-table__row', function (e) {
+        if (e.target.classList.contains('open-image')) {
+            return;
+        }
             $sku = $(this).find('.materials-table__col--1').text()
             $.ajax({
                 type: "POST",
@@ -969,7 +1034,8 @@ $(document).ready(function() {
                 }
             });
     });
-    $(document).on('click', '.open-image', function () {
+    $(document).on('click', '.open-image', function (e) {
+        e.preventDefault();
         overlayPhoto.addClass('overlay--photo');
         overlayPhoto.addClass('overlay--is-active');
         overlayPhoto.find('img').attr('src', $(this).attr('src'));
@@ -1131,6 +1197,9 @@ $(document).ready(function() {
                         let $successPopup = $('.page--recept-loaded')
                         $successPopup.addClass('opened')
                         $successPopup.find('.page__text').text(response.success)
+                        setTimeout(function (){
+                            $successPopup.removeClass('opened')
+                        }, 2000)
                     } else if (response.error) {
                         alert(response.error)
                         return;
@@ -1298,7 +1367,7 @@ $(document).ready(function() {
                     $tableRow.append('<div class="author-recept-table__col author-recept-table__col--2"><img src="' + image + '" alt="' + name + '" class="author-recept-table__img open-image"></div>');
                     $tableRow.append('<div class="author-recept-table__col author-recept-table__col--3">' + name + '</div>');
                     $tableRow.append('<div class="author-recept-table__col author-recept-table__col--4">' + size + ' см</div>');
-                    $tableRow.append('<div class="author-recept-table__col author-recept-table__col--5">' + originalCount + ' од.</div>');
+                    $tableRow.append('<div class="author-recept-table__col author-recept-table__col--5"><span class="counting">' + originalCount + '</span>' + ' од.</div>');
                     $tableRow.append('<div class="author-recept-table__col author-recept-table__col--6">' + placement + '</div>');
                     $tableRow.append('<div class="author-recept-table__col author-recept-table__col--7"><button class="btn-delete">X</button></div>');
 
@@ -1485,7 +1554,7 @@ $(document).ready(function() {
             <div class="materials-table__row
                 ${material.count > 10 && material.count < 100 ? 'materials-table__row--yellow' :
                         (material.count > 0 && material.count < 10 ? 'materials-table__row--red' :
-                            (material.count === 0 ? 'materials-table__row--empty' : ''))}">
+                            (material.count == 0 ? 'materials-table__row--empty' : ''))}">
                 <div class="materials-table__col materials-table__col--1">${material.sku}</div>
                 <div class="materials-table__col materials-table__col--2">
                     <img src="${material.image}" alt="${material.name}" class="materials-table__img open-image">

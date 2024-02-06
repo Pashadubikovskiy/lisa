@@ -234,6 +234,9 @@ body {
   line-height: 18px;
   text-align: center;
 }
+.analitics-table__col--1 {
+  min-width: 8rem;
+}
 .analitics-table__header .analitics-table__col {
   padding: 0;
   border: none;

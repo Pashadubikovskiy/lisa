@@ -233,6 +233,12 @@ body {
   color: #000;
   font-weight: 600;
 }
+.select-recept-table__row--is-red {
+  background: rgba(255, 0, 0, 0.2);
+}
+.select-recept-table__row--is-red:hover {
+  background: rgba(255, 0, 0, 0.2) !important;
+}
 .select-recept-table__row--empty {
   color: #A49C9C;
 }
@@ -254,6 +260,9 @@ body {
   padding: 3rem;
   font-size: 17px;
   line-height: 18px;
+}
+.select-recept-table__col--1 {
+  min-width: 8rem;
 }
 .select-recept-table__col--2 {
   padding: 0;
@@ -341,7 +350,8 @@ body {
 
 .new-component {
   background: #D5D9FE;
-  height: 336px;
+  height: fit-content;
+  max-height: 70vh;
   display: flex;
   align-items: center;
   overflow: auto;

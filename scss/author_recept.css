@@ -271,6 +271,9 @@ body {
   font-size: 17px;
   line-height: 18px;
 }
+.author-recept-table__col--1 {
+  min-width: 8rem;
+}
 .author-recept-table__col--2 {
   padding: 0;
 }
@@ -357,7 +360,8 @@ body {
 
 .new-component {
   background: #D5D9FE;
-  height: 336px;
+  height: fit-content;
+  max-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;

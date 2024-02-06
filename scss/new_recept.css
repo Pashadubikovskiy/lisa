@@ -458,7 +458,8 @@ body {
 
 .new-component {
   background: #D5D9FE;
-  height: 336px;
+  height: fit-content;
+  max-height: 70vh;
   display: flex;
   align-items: center;
   overflow: auto;

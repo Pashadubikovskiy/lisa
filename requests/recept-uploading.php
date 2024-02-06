@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $conn->query($sql);
     }
 
-    $response['success'] = "Дані успішно оновлені";
+    $response['success'] = "Рецепт зібрано!";
 } else {
     $response['error'] = "Невірний метод запиту";
 }

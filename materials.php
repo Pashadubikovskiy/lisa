@@ -55,6 +55,11 @@ $result = $conn->query($sql_categories);
                         </a>
                     </li>
                     <li class="burger-menu-list__item burger-menu-list-item">
+                        <a href="analitic_materials.php" class="burger-menu-list-item__link">
+                            аналітика
+                        </a>
+                    </li>
+                    <li class="burger-menu-list__item burger-menu-list-item">
                         <a href="recepts.php" class="burger-menu-list-item__link">
                             рецепти
                         </a>
